@@ -17,7 +17,7 @@ class Login extends Component {
 
   handleClick = () => {
     console.log('hi');
-    // console.log(process.env.REACT_APP_API_KEY);
+    console.log(process.env.REACT_APP_API_KEY);
   }
 
   handleChange = (event) => {
@@ -27,8 +27,9 @@ class Login extends Component {
   }
 
   handleSubmit = async () => {
+      console.log(process.env.REACT_APP_MAGIC_LINK_API_KEY);
       console.log('this.state.email', this.state.email);
-      const did = await new Magic('pk_live_72B536E564E8019B').auth.loginWithMagicLink({ email: this.state.email });
+      const did = await new Magic(process.env.REACT_APP_MAGIC_LINK_API_KEY).auth.loginWithMagicLink({ email: this.state.email });
       console.log('did', did);
       const authRequest = await fetch('/api/login', {
            method: 'POST',

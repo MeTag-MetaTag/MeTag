@@ -11,13 +11,14 @@ class Home extends Component {
 
   handleClick = () => {
     console.log('hi');
-    // console.log(process.env.REACT_APP_API_KEY);
   }
 
   render() {
+    console.log(process.env.REACT_APP_MAGIC_LINK_API_KEY);
     return (
         <div>
           Hye yo home page
+          <Button onClick={this.handleClick}>Click Me</Button>
         </div>
     );
   }
