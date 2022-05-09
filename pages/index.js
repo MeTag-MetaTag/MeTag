@@ -14,7 +14,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(process.env.REACT_APP_MAGIC_LINK_API_KEY);
     return (
         <div>
           Hye yo home page

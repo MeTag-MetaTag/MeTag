@@ -1,61 +1,44 @@
 import styles from '../styles/Home.module.css'
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Button, Form } from 'semantic-ui-react';
 import { Magic } from 'magic-sdk';
-import { Router } from 'next/router';
+import { useRouter } from 'next/router';
 
-class Login extends Component {
 
-    state = {
-        email: ''
-    }
+function Login(props) {
 
-  constructor(props) {
-    super(props);
+  const [email, setEmail] = useState('');
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [userData, setUserData] = useState({});
+  const router = useRouter();
+
+  const handleSubmit = async () => {
+    const magic = new Magic('pk_live_72B536E564E8019B');
+    let redirectAddress = 'localhost:3000'
+    await magic.auth.loginWithMagicLink({ email, redirectAddress })
+    const userMetadata = await magic.user.getMetadata();
+    setUserData(userMetadata);
+    const isLoggedIn = await magic.user.isLoggedIn();
+    setLoggedIn(isLoggedIn);
+    
   }
 
-  handleClick = () => {
-    console.log('hi');
-    console.log(process.env.REACT_APP_API_KEY);
-  }
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Form.Field>
+        <label>Email address</label>
+        <input
+          placeholder='Email Address' 
+          value={email} 
+          onChange={e => setEmail(e.target.value)} 
+         />
+      </Form.Field>
+      <Button>Authenticate Me!</Button>
+      <h3>Current User: {userData.email}</h3>
+    </Form>
+  );
 
-  handleChange = (event) => {
-      this.setState({
-          email: event.target.value
-      }, () => {console.log(this.state.email)})
-  }
-
-  handleSubmit = async () => {
-      console.log(process.env.REACT_APP_MAGIC_LINK_API_KEY);
-      console.log('this.state.email', this.state.email);
-      const did = await new Magic(process.env.REACT_APP_MAGIC_LINK_API_KEY).auth.loginWithMagicLink({ email: this.state.email });
-      console.log('did', did);
-      const authRequest = await fetch('/api/login', {
-           method: 'POST',
-           headers: { Authorization: `Bearer ${did}` },
-       });
-       if (authRequest.ok) {
-           Router.push('/');
-       }
-       else {
-           console.log('error');
-       }
-  }
-
-
-
-  render() {
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Field>
-          <label>Email address</label>
-          <input placeholder='Email Address' value={this.state.email} onChange={this.handleChange} />
-        </Form.Field>
-        <Button>Submit Me!</Button>
-      </Form>
-    );
-  }
 }
 
 export default Login;
