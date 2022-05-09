@@ -1,0 +1,61 @@
+
+.login {
+    /* width: 360px;
+    height: 352px;
+    left: 540px;
+    top: 336px;
+     */
+    background: #F0F6FB;
+    border-radius: 12px;
+}
+
+.metaglogo {
+position: absolute;
+width: 75px;
+height: 30px;
+left: 13px;
+top: 7px;
+
+font-family: 'Vampiro One';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 30px;
+/* identical to box height */
+color: #FFFFFF;
+}
+
+.cell {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    padding: 4rem;
+  }
+  
+.signupheader {
+    position: static;
+    width: 89px;
+    height: 29px;
+    left: 90.5px;
+    top: 0px;
+
+    font-family: 'Cerebri Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+
+    /* black */
+
+    color: #091B2C;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 12px 0px;
+}
