@@ -1,61 +1,45 @@
 
 .login {
-    /* width: 360px;
-    height: 352px;
-    left: 540px;
-    top: 336px;
-     */
+    width: 20%;
+    height: 20%;
     background: #F0F6FB;
     border-radius: 12px;
+    margin-top: 15%;
+    margin-left: 40%;
 }
 
-.metaglogo {
-position: absolute;
-width: 75px;
-height: 30px;
-left: 13px;
-top: 7px;
-
-font-family: 'Vampiro One';
-font-style: normal;
-font-weight: 400;
-font-size: 24px;
-line-height: 30px;
-/* identical to box height */
-color: #FFFFFF;
-}
-
-.cell {
-    color: white;
-    font-size: 3rem;
-    text-align: center;
-    padding: 4rem;
-  }
-  
-.signupheader {
-    position: static;
-    width: 89px;
-    height: 29px;
-    left: 90.5px;
-    top: 0px;
-
+.signUp {
     font-family: 'Cerebri Sans Pro';
+    text-align: center;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
-    /* identical to box height */
-
-
-    /* black */
-
     color: #091B2C;
+}
 
+.bodyText {
+    text-align: center;
+    /* font-family: 'Kumbh Sans'; */
+    font-weight: 100;
+    font-style: normal;
+    font-size: 16px;
+    color: #232D36;
+}
 
-    /* Inside auto layout */
+.input {
+    background: #FFFFFF;
+    border: 1.4px solid #A5AEB6;
+    border-radius: 4px;
+}
 
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    margin: 12px 0px;
+.btn {
+    width: 140px;
+    height: 48px;
+    background-color: #0F77D2;
+    border: 1px solid #0F77D2;
+    border-radius: 4px;
+    color: white;
+    margin-left: 20%;
+    margin-bottom: 5%;
 }
