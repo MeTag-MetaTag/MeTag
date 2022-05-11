@@ -1,0 +1,55 @@
+.bg {
+    text-align: center;
+    position:absolute;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    width:340px;
+    height:350px;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -12em; /*set to a negative number 1/2 of your width*/
+ 
+    background-color: #F0F6FB;
+}
+.txt{
+    position: relative;
+    left: 50px;
+    text-align: center;
+    width:17em;
+    height:5em;
+}
+.txtinput{
+    border: 1px solid #ccc;
+}
+.txtinput::hover{
+    border: 1px solid blue
+}
+.btn {
+    width: 260px;
+    height: 45px;
+    cursor: pointer;
+    background-color: #0F77D2;
+    border: 1px solid #0F77D2;
+    border-radius: 4px;
+    color: white;
+}
+.magiclinkbold{
+    font-size: medium;
+    font-weight: 900;
+}
+.txtnorm {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+}
+.headerbutton {
+    position: relative;
+    background-color: #0F77D2;
+    border: 1px solid #0F77D2;
+    color: white;
+    left: 20px;
+    margin: 20px;
+    width: 100px;
+    height: 35px;
+    top:0;
+    right:0;
+}
