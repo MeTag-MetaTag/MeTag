@@ -40,3 +40,15 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: lighter;
 }
+.headerbutton {
+    position: relative;
+    background-color: #0F77D2;
+    border: 1px solid #0F77D2;
+    color: white;
+    left: 20px;
+    margin: 20px;
+    width: 100px;
+    height: 35px;
+    top:0;
+    right:0;
+}

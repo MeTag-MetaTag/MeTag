@@ -36,49 +36,52 @@ function Home(props) {
   };
 
   return (
-    <div className="bg">
-      <link
-        href="http://fonts.googleapis.com/css?family=Open+Sans"
-        rel="stylesheet"
-        type="text/css"
-      ></link>
-      <Form className="">
-        <div>
-          <br />
-          <h2>Sign Up</h2>
-          <div className="txt">
-            <span className="txtnorm">
-              Can you enter your email address and we will send
-            </span>
-            <span className="magiclinkbold"> magic link </span>
-            <span className="txtnorm">to complete registation</span>
+    <div>
+      <button className="headerbutton"> METAG</button>
+      <div className="bg">
+        <link
+          href="http://fonts.googleapis.com/css?family=Open+Sans"
+          rel="stylesheet"
+          type="text/css"
+        ></link>
+        <Form className="">
+          <div>
+            <br />
+            <h2>Sign Up</h2>
+            <div className="txt">
+              <span className="txtnorm">
+                Can you enter your email address and we will send
+              </span>
+              <span className="magiclinkbold"> magic link </span>
+              <span className="txtnorm">to complete registation</span>
+            </div>
+            <br />
+            <input
+              style={{ width: "260px", height: "45px" }}
+              type="email"
+              placeholder="Email Address:"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="txtinput"
+            />
           </div>
           <br />
-          <input
-            style={{ width: "260px", height: "45px" }}
-            type="email"
-            placeholder="Email Address:"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="txtinput"
-          />
-        </div>
-        <br />
 
-        {isLoggedIn ? (
-          <button
-            className=""
-            style={{ width: "20px", height: "20px" }}
-            onClick={handleClick}
-          >
-            Logout
-          </button>
-        ) : (
-          <button className="btn" onClick={handleClick}>
-            Continue
-          </button>
-        )}
-      </Form>
+          {isLoggedIn ? (
+            <button
+              className=""
+              style={{ width: "20px", height: "20px" }}
+              onClick={handleClick}
+            >
+              Logout
+            </button>
+          ) : (
+            <button className="btn" onClick={handleClick}>
+              Continue
+            </button>
+          )}
+        </Form>
+      </div>
     </div>
   );
 }
