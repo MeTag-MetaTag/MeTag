@@ -3,7 +3,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { Button, Form, Container } from 'semantic-ui-react';
 import { Magic } from 'magic-sdk';
 // import { useRouter } from 'next/router';
-import styles from '../styles/Login.module.css'
+import styles from '../styles/Home.module.css'
 import { ethers } from 'ethers';
 
 
