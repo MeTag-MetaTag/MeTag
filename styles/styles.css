@@ -27,6 +27,7 @@
 .btn {
     width: 260px;
     height: 45px;
+    cursor: pointer;
     background-color: #0F77D2;
     border: 1px solid #0F77D2;
     border-radius: 4px;
