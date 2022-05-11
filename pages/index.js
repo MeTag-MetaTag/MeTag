@@ -3,6 +3,8 @@ import "semantic-ui-css/semantic.min.css";
 import { Button, Form, Container } from "semantic-ui-react";
 import { Magic } from "magic-sdk";
 import { useRouter } from "next/router";
+//import worldID from "@worldcoin/id";
+
 //import styles from "../styles/Home.module.css";
 
 function Home(props) {
@@ -10,7 +12,11 @@ function Home(props) {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState("");
   const router = useRouter();
-
+  /*worldID.init("world-id-container", {
+    enableTelemetry: true,
+    actionId: "0x330C8452C879506f313D1565702560435b0fee4C", // <- use the address of your smart contract
+    signal: "0x330C8452C879506f313D1565702560435b0fee4C", // <- Fill in with the user's wallet address here
+  });*/
   const handleClick = async () => {
     console.log("top of handleClick", isLoggedIn);
     if (isLoggedIn) {
@@ -34,7 +40,16 @@ function Home(props) {
       router.push("/User");
     }
   };
-
+  /* document.addEventListener("DOMContentLoaded", async function () {
+    try {
+      const result = await worldID.enable();
+      console.log("World ID verified succesfully:", result); // <- Pass this result to your wallet transaction
+    } catch (failure) {
+      console.warn("World ID verification failed:", failure);
+      // Re-activate here so your end user can try again
+    }
+  });
+*/
   return (
     <div>
       <button className="headerbutton"> METAG</button>
@@ -82,6 +97,7 @@ function Home(props) {
           )}
         </Form>
       </div>
+      <div id="world-id-container"> world coin stuff</div>
     </div>
   );
 }
