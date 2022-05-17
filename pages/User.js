@@ -3,6 +3,7 @@ import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import WalletConnect from "@walletconnect/web3-provider";
 import { useState } from "react";
 import { ethers } from "ethers";
+import { Button } from '@chakra-ui/react';
 
 
 const User = () => {
@@ -53,7 +54,7 @@ const User = () => {
 
   return (
     <div className="App">
-      <button onClick={connectWallet}>Connect Wallet</button>
+      <Button onClick={connectWallet}>Connect Wallet</Button>
       <div>Connection Status: {!!account}</div>
       <div>Wallet Address: {account}</div>
     </div>
