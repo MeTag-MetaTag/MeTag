@@ -15,13 +15,13 @@ const User = () => {
       package: CoinbaseWalletSDK,
       options: {
         appName: "fingers-crossed",
-        infuraId: "92f495c06a4b48f0b0410e64561b8891"
+        infuraId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID
       }
     },
     walletconnect: {
       package: WalletConnect,
       options: {
-        infuraId: "92f495c06a4b48f0b0410e64561b8891"
+        infuraId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID
       }
     }
   };
@@ -35,6 +35,7 @@ const User = () => {
     const web3Modal = new Web3Modal({
       providerOptions
     });
+    web3Modal.clearCachedProvider();
     try {
       const provider = await web3Modal.connect();
       const library = new ethers.providers.Web3Provider(provider);
