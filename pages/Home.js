@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css';
 import { useWeb3React } from "@web3-react/core";
 import { connectors } from "../utils/connectors";
+import Navbar from '../components/Navbar';
 
 
 function Home(props) {
@@ -58,6 +59,7 @@ function Home(props) {
   
   return (
       <div>
+        <Navbar />
           <Form className={styles.login}>
             <Form.Field>
               <label className={styles.signUp}>Sign up</label>

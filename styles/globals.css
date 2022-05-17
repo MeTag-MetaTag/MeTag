@@ -1,16 +1,295 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+body{
+  background:#040D21
 }
 
-* {
-  box-sizing: border-box;
+
+:root {
+  --page-bg: linear-gradient(180deg, #040F26 0%, #040D21 48.96%, #040D21 76.56%, #0D77F3 100%);
+  --gradient-1: linear-gradient(90.26deg, #1A6AFF 0%, #D817F8 49.45%, #FFA51E 99.95%, #1A6AFF 100%);
+  --gradient-2: linear-gradient(99.01deg, rgba(77, 228, 138, 0.4567) 0%, rgba(238, 88, 43, 0.6) 51.04%, rgba(32, 137, 249, 0.6) 100%);
+  --gradient-3: linear-gradient(90deg, #0094FF 0%, #5AB2F1 11.96%, #D817F8 23.87%, #EF89EC 35.75%, #FE6734 44.77%, #EE582B 54.58%, #FC7752 62.07%, #ED805B 71.62%, rgba(120, 224, 238, 0.89) 80.38%, #83C2F8 85.35%, #36A8FA 92.26%, #2089F9 100%);
+}
+
+@layer base{
+  /*text styles*/
+  h2, h3, h4, h5, .sub-heading-1, .sub-heading-2, .large-bold-text, .bold-text, .form-text, .small-text, .quote, .small-inline-text, .nav-link, button, .small-bold-text {
+    color: white;
+  }
+  .paragraph, .small-inline-bold-text, .footer-link{
+    color: #EBF1FE;
+  }
+
+  h1{
+    @apply font-inter font-bold text-gradient-1 block laptop:text-[34px] text-[20px] capitalize;
+  }
+  h2 {
+    @apply font-inter font-bold laptop:text-[28px] text-[20px] capitalize;
+  }
+  h3 {
+    @apply font-cabin font-bold laptop:text-[30px] text-[20px] capitalize;
+  }
+  h4 {
+    @apply font-inter font-bold laptop:text-[24px] text-[14px] capitalize;
+  }
+  h5 {
+    @apply font-cabin font-bold laptop:text-[20px] text-[18px] capitalize;
+  }
+  h6 {
+    @apply font-inter font-bold text-border-gradient-3 laptop:text-[42px] text-[22px];
+  }
+  
+  /*TODO: make font size responsive for the text styles below*/
+  .all-cap {
+    @apply font-inter font-bold tracking-wide text-gradient-1 text-[30px] uppercase;
+  }
+  .sub-heading-1 {
+    @apply font-inter font-light tracking-[-0.013em] laptop:text-[17px] text-[16px];
+  }
+  .sub-heading-2 {
+    @apply font-poppins font-medium laptop:text-[18px] text-[14px];
+  }
+  .paragraph {
+    @apply font-poppins font-normal tracking-[-0.015em] text-[18px] drop-shadow-sm;
+  }
+  .large-bold-text {
+    @apply font-inter text-[22px] font-bold;
+  }
+  .bold-text {
+    @apply font-inter font-bold text-[15px];
+  }
+  .form-text {
+     @apply font-inter font-bold laptop:text-[16px] text-[12px] capitalize;
+  }
+  .small-text {
+    @apply font-poppins font-normal text-[13px] laptop:text-[15px];
+  }
+  .quote {
+    @apply font-indieflower tracking-wider text-[14px] laptop:text-[23px];
+  }
+  .small-inline-bold-text {
+    @apply font-poppins font-semibold text-[13px];
+  }
+  .small-inline-text {
+    @apply font-poppins font-medium text-[13px] laptop:text-[21px];
+  }
+  .placeholder {
+    @apply font-cabin font-bold text-[#35353B] laptop:text-[30px] text-[20px];
+  }
+  .nav-link {
+    @apply font-poppins font-semibold text-[14px] hover:bg-[#dbd5d533] ease-in transition duration-500 py-1 px-2 border-0 rounded-xl;
+  }
+  .footer-link {
+    @apply font-poppins font-medium text-[14px];
+  }
+  .small-bold-text {
+     @apply font-inter font-bold text-[14px] text-[#91959D] laptop:text-[15px];
+  }
+
+}
+
+@layer components {
+  /*buttons*/
+  button {
+    @apply flex flex-row justify-center items-center rounded-xl
+    font-inter font-bold capitalize;
+  }
+  button.primary, button.tetiary-1, button.tetiary-2{
+    @apply bg-transparent;
+  }
+  button.primary, button.secondary {
+    @apply text-[14px] h-[45px] laptop:text-[16px] laptop:h-[45px];
+  }
+  button.tetiary-1, button.tetiary-2 {
+    @apply text-[14px] py-[10px] leading-[22px]
+  }
+
+  button.primary {
+    @apply px-[30px] border-gradient-1;
+  }
+  button.secondary {
+    background-size: 140%;
+    @apply w-[262px] background-gradient-1;
+  }
+  button.secondary::after {
+    content: url("../public/img/linkArrow.svg");
+    padding-left: 16px;
+    transition: transform .5s ease;
+  }
+  button.secondary:hover::after {
+    transform: translate(2px, -2px);
+  }
+  button.tetiary-1 {
+    @apply px-[30px] border-gradient-1;
+  }
+  button.tetiary-2 {
+    @apply px-[16px] border-gradient-2;
+  }
+    button.additional-forward, button.additional {
+    @apply py-[13px] px-[43px] bg-blue-300
+    text-[16px];
+  }
+  button.additional-backward{
+    @apply py-[13px] px-[20px] bg-blue-300
+    text-[16px];
+  }
+  button.additional-backward::content{
+    padding-left: 16px;
+  } 
+  button.additional-forward::befo{
+    padding-right: 16px;
+  }
+  button.additional-forward::after {
+    content: url("../public/img/rightArrow.svg");
+    transition: transform .5s ease;
+    padding-left: 16px;
+  }
+  button.additional-forward:hover::after {
+    transform: translate(4px);
+  }
+  button.additional-backward::before {
+    content: url("../public/img/leftArrow.svg");
+    transition: transform .5s ease;
+  }
+  button.additional-backward:hover::before {
+    transform: translate(-4px);
+  }
+
+
+  /*Input fields*/
+  .input-form {
+    @apply text-white bg-black/20 block w-full border-2 border-white/20 rounded-xl p-2.5 laptop:p-3;
+  }
+  input.input-form-1 {
+    @apply w-full bg-transparent pl-2 py-3 placeholder text-white
+    border-0 border-b-2 border-b-[#35353B] outline-0;
+  }
+  input.input-form-1::placeholder {
+    @apply placeholder;
+  }
+  input.input-form-2 {
+    @apply mb-2 w-full h-[52px] laptop:w-[262px] laptop:h-[52px] p-[15px] rounded-lg
+    bg-black/30 border-2 border-black/40 box-border form-text;
+  }
+  
+  /*Progress Bar*/
+  progress.progress-1 {
+    height: 5px;
+  }
+  progress.progress-1::-webkit-progress-bar {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 7px;
+  }
+  progress.progress-1::-webkit-progress-value {
+    border-radius: 7px;
+    @apply bg-blue-200;
+  }
+}
+
+@layer utilities{
+  /*fonts*/
+  .font-inter{
+    font-family: 'Inter';
+  }
+  .font-poppins{
+    font-family: "Poppins";
+  }
+  .font-cabin{
+    font-family: "Cabin";
+  }
+  .font-indieflower{
+    font-family: "Indie Flower";
+  }
+
+  /*gradients*/
+  .text-gradient-1, .text-gradient-2, .text-gradient-3 {
+    background-size:auto;
+    width:fit-content;
+    color: transparent;
+    background-clip: text;
+    background-position: center;
+  }
+  
+  .text-border-gradient-1, .text-border-gradient-2, .text-border-gradient-3 {
+    width:fit-content;
+    background-clip: text;
+    background-size:auto;
+    background-position: center;
+    -webkit-text-stroke: 3px transparent;
+    letter-spacing:2px;
+  }
+
+  .border-gradient-1, .border-gradient-2, .border-gradient-3 {
+    position: relative;
+  }
+  .border-gradient-1::before, .border-gradient-2::before, .border-gradient-3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+
+  .border-gradient-1::before{
+    background: var(--gradient-1) border-box;
+  }
+  .border-gradient-2::before{
+    background: var(--gradient-2) border-box;
+  }
+  .border-gradient-3::before{
+    background: var(--gradient-3) border-box;
+  }
+
+  .text-gradient-1, .text-border-gradient-1, .background-gradient-1{
+    background-image: var(--gradient-1);
+  } 
+  .text-gradient-2, .text-border-gradient-2, .background-gradient-2{
+    background-image: var(--gradient-2);
+  } 
+  .text-gradient-3, .text-border-gradient-3, .background-gradient-3{
+    background-image: var(--gradient-3);
+  }
+
+
+  /*animations*/
+  .fade-in {
+    opacity: 0;
+    animation: revealAnimation 2s ease;
+    opacity: 1;
+  }
+  @keyframes revealAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes animatedbordergradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }
