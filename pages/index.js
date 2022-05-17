@@ -18,7 +18,6 @@ function Home(props) {
     console.log("top of handleClick", isLoggedIn);
     if (isLoggedIn) {
       const magic = new Magic("pk_live_72B536E564E8019B");
-      console.log("so true?");
       await magic.user.logout();
       const isLoggedIn = await magic.user.isLoggedIn();
       setLoggedIn(isLoggedIn);

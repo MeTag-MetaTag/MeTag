@@ -5,7 +5,6 @@ import { useState } from "react";
 import { ethers } from "ethers";
 import { Button } from '@chakra-ui/react';
 
-
 const User = () => {
   
   const providerOptions = {
@@ -40,12 +39,12 @@ const User = () => {
     try {
       const provider = await web3Modal.connect();
       const library = new ethers.providers.Web3Provider(provider);
-      const accounts = await library.listAccounts();
-      const network = await library.getNetwork();
+      // const accounts = await library.listAccounts();
+      // const network = await library.getNetwork();
+      console.log('library', library.provider);
       setProvider(provider);
-      console.log("provider", provider);
       setLibrary(library);
-      if (accounts) setAccount(accounts[0]);
+      // if (accounts) setAccount(accounts[0]);
       setNetwork(network);
     } catch (error) {
       console.error(error);
@@ -55,8 +54,8 @@ const User = () => {
   return (
     <div className="App">
       <Button onClick={connectWallet}>Connect Wallet</Button>
-      <div>Connection Status: {!!account}</div>
-      <div>Wallet Address: {account}</div>
+      {/* <div>Connection Status: {!!account}</div>
+      <div>Wallet Address: {account}</div> */}
     </div>
   );
 

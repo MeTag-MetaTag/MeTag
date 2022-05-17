@@ -15,5 +15,11 @@
 
   .button {
     margin-top: 20px;
-    
+
   }
+
+
+    .backdrop {
+      background: linear-gradient(180deg, #040F26 0%, #040D21 48.96%, #040D21 76.56%, #0D77F3 100%)
+    } 
+      
