@@ -3,9 +3,6 @@ import "semantic-ui-css/semantic.min.css";
 import { Button, Form, Container } from "semantic-ui-react";
 import { Magic } from "magic-sdk";
 import { useRouter } from "next/router";
-//import worldID from "@worldcoin/id";
-
-//import styles from "../styles/Home.module.css";
 
 function Home(props) {
   const [email, setEmail] = useState("");
