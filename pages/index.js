@@ -4,6 +4,14 @@ import { Button, Form, Container } from "semantic-ui-react";
 import { Magic } from "magic-sdk";
 import { useRouter } from "next/router";
 //import worldID from "@worldcoin/id";
+// import { Web3Provider } from "@ethersproject/providers";
+import { WalletLinkConnector } from "@web3-react/walletlink-connector";
+import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
+import { InjectedConnector } from "@web3-react/injected-connector";
+import { Web3ReactProvider, useWeb3React } from '@web3-react/core'
+import { ethers } from 'ethers';
+import { Web3Provider } from "@ethersproject/providers";
+
 
 //import styles from "../styles/Home.module.css";
 
@@ -50,56 +58,95 @@ function Home(props) {
     }
   });
 */
-  return (
+
+const CoinbaseWallet = new WalletLinkConnector({
+  url: process.env.NEXT_PUBLIC_INFURA_API_KEY,
+  appName: "MeTag",
+  supportedChainIds: [1, 3, 4, 5, 42],
+ });
+ 
+ const WalletConnect = new WalletConnectConnector({
+  rpcUrl: process.env.NEXT_PUBLIC_INFURA_API_KEY,
+  bridge: "https://bridge.walletconnect.org",
+  qrcode: true,
+ });
+ 
+ const Injected = new InjectedConnector({
+  supportedChainIds: [1, 3, 4, 5, 42]
+ });
+
+ function getLibrary(provider) {
+  return new Web3Provider(provider);
+}
+
+
+
+  const handleActivate = (provider) => {
+    const context = new Web3Provider(provider);
+    console.log('context', context);
+    setContext(context);
+    activate(provider);
+  }
+  const [context, setContext] = useState();
+
+  // const { active, activate, deactivate, library, chainId, account, } = context;
+
+    return (
     <div>
-      <button className="headerbutton"> METAG</button>
-      <div className="bg">
-        <link
-          href="http://fonts.googleapis.com/css?family=Open+Sans"
-          rel="stylesheet"
-          type="text/css"
-        ></link>
-        <Form className="">
-          <div>
-            <br />
-            <h2>Sign Up</h2>
-            <div className="txt">
-              <span className="txtnorm">
-                Can you enter your email address and we will send
-              </span>
-              <span className="magiclinkbold"> magic link </span>
-              <span className="txtnorm">to complete registation</span>
+      <button onClick={() => { handleActivate(CoinbaseWallet) }}>Coinbase Wallet</button>
+      <button onClick={() => { handleActivate(WalletConnect) }}>Wallet Connect</button>
+      <button onClick={() => { handleActivate(Injected) }}>MetaMask</button>
+      {/* <button onClick={deactivate}>Disconnect</button> */}
+      <div>
+        <button className="headerbutton"> METAG</button>
+        <div className="bg">
+          <link
+            href="http://fonts.googleapis.com/css?family=Open+Sans"
+            rel="stylesheet"
+            type="text/css"
+          ></link>
+          <Form className="">
+            <div>
+              <br />
+              <h2>Sign Up</h2>
+              <div className="txt">
+                <span className="txtnorm">
+                  Can you enter your email address and we will send
+                </span>
+                <span className="magiclinkbold"> magic link </span>
+                <span className="txtnorm">to complete registation</span>
+              </div>
+              <br />
+              <input
+                style={{ width: "260px", height: "45px" }}
+                type="email"
+                placeholder="Email Address:"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="txtinput"
+              />
             </div>
             <br />
-            <input
-              style={{ width: "260px", height: "45px" }}
-              type="email"
-              placeholder="Email Address:"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="txtinput"
-            />
-          </div>
-          <br />
 
-          {isLoggedIn ? (
-            <button
-              className=""
-              style={{ width: "20px", height: "20px" }}
-              onClick={handleClick}
-            >
-              Logout
-            </button>
-          ) : (
-            <button className="btn" onClick={handleClick}>
-              Continue
-            </button>
-          )}
-        </Form>
+            {isLoggedIn ? (
+              <button
+                className=""
+                style={{ width: "20px", height: "20px" }}
+                onClick={handleClick}
+              >
+                Logout
+              </button>
+            ) : (
+              <button className="btn" onClick={handleClick}>
+                Continue
+              </button>
+            )}
+          </Form>
+        </div>
+        <div id="world-id-container"> world coin stuff</div>
       </div>
-      <div id="world-id-container"> world coin stuff</div>
-    </div>
-  );
+      </div>
+    );
 }
 
 export default Home;
