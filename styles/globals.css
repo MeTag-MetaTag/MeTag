@@ -7,10 +7,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-<<<<<<< Updated upstream
-=======
-  
->>>>>>> Stashed changes
 }
 
 body{
@@ -55,7 +51,7 @@ body{
   
   /*TODO: make font size responsive for the text styles below*/
   .all-cap {
-    @apply font-inter font-bold tracking-wide text-gradient-1 text-[30px] uppercase;
+    @apply font-inter font-bold tracking-wide text-gradient-1 text-[30px] ;
   }
   .sub-heading-1 {
     @apply font-inter font-light tracking-[-0.013em] laptop:text-[17px] text-[16px];
@@ -126,11 +122,7 @@ body{
     @apply w-[262px] background-gradient-1;
   }
   button.secondary::after {
-<<<<<<< Updated upstream
-    content: url("../public/img/linkArrow.svg");
-=======
     /* content: url("../public/img/linkArrow.svg"); */
->>>>>>> Stashed changes
     padding-left: 16px;
     transition: transform .5s ease;
   }
@@ -252,10 +244,7 @@ body{
     -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
-<<<<<<< Updated upstream
-=======
     z-index: -1;
->>>>>>> Stashed changes
   }
 
   .border-gradient-1::before{

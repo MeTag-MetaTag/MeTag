@@ -13,19 +13,10 @@ const getLibrary = (provider) => {
 
 const App = () => {
   return (
-    <>
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500&family=Indie+Flower&family=Inter:wght@300;400&family=Poppins:ital,wght@0,300;1,300&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
       <Web3ReactProvider getLibrary={getLibrary}>
         <Home />
       </Web3ReactProvider>
-    </>
+    
   );
 };
 
