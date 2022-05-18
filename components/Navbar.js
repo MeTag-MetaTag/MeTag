@@ -29,13 +29,40 @@ function Navbar(props) {
       <div className="flex mr-auto py-2 pl-6">
         <Link href="/">
           <a className="flex mr-auto hover:bg-[#dbd5d533] ease-in transition duration-700 px-2 py-1 border-0 rounded-xl">
+<<<<<<< Updated upstream
             <div className="font-inter font-semibold text-[26px] text-white">
               MetTag
+=======
+            {/* <div className="h-9 w-9 mr-2.5">
+                <Image src={logo} layout="responsive" alt="image" />
+              </div> */}
+            <div className="font-inter font-semibold text-[26px] text-white">
+              MeTag
+>>>>>>> Stashed changes
             </div>
           </a>
         </Link>
       </div>
+<<<<<<< Updated upstream
      
+=======
+      <div className="absolute space-x-8">
+        {/* <div className=" left-auto flex items-center"> */}
+        <Link href="/about">
+          <a className="nav-link">About Us</a>
+        </Link>
+        <Link href="/events">
+          <a className="nav-link">Shop</a>
+        </Link>
+        <Link href="/contact">
+          <a className="nav-link">Contact Us</a>
+        </Link>
+        <Link href="/team">
+          <a className="nav-link">Team</a>
+        </Link>
+      </div>
+      {/* </div> */}
+>>>>>>> Stashed changes
       <div className="items-end">
         <button className="tetiary-1">Join Us</button>
       </div>
