@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Image from "next/image";
 import Line from "../public/Vector 37.svg";
+import design from "../public/icons/Vector.svg"
 import { useEffect } from "react";
 import Gradient from "../components/Gradient";
 
@@ -40,13 +41,13 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Copy
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Pay
                     </button>
@@ -66,13 +67,13 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Copy
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Pay
                     </button>
@@ -92,13 +93,13 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Copy
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Pay
                     </button>
@@ -117,13 +118,13 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Pay
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Hours
                     </button>
@@ -144,13 +145,13 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Pay
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Connect
                     </button>
@@ -170,13 +171,13 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Copy
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Connect
                     </button>
@@ -196,13 +197,13 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Copy
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Connect
                     </button>
@@ -221,7 +222,7 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Copy
                     </button>
@@ -233,9 +234,10 @@ function About(props) {
                 <div className="all-cap mb-11">Get Your MeTag At</div>
                 <button
                   type="button"
-                  className="w-[71.17px] h-[38.96px] bg-blue-200 sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px] mb-20"
+                  className="w-[71.17px] h-[38.96px] bg-[#77D672] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px] mb-20"
                 >
-                  Buy
+                  Buy<span> <Image src={design}/>
+                    </span>
                 </button>
               </div>
             </form>
