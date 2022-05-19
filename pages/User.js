@@ -28,34 +28,66 @@ const User = () => {
 
   const [provider, setProvider] = useState();
   const [library, setLibrary] = useState();
-  const [account, setAccount] = useState();
+  const [account, setAccount] = useState('');
   const [network, setNetwork] = useState();
+  const [chainId, setChainId] = useState();
 
   const connectWallet = async () => {
     const web3Modal = new Web3Modal({
       providerOptions
     });
-    web3Modal.clearCachedProvider();
+    // web3Modal.clearCachedProvider();
     try {
       const provider = await web3Modal.connect();
       const library = new ethers.providers.Web3Provider(provider);
       const accounts = await library.listAccounts();
       const network = await library.getNetwork();
       setProvider(provider);
-      console.log("provider", provider);
       setLibrary(library);
       if (accounts) setAccount(accounts[0]);
       setNetwork(network);
+      setChainId(network.chainId);
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const handleNetwork = (e) => {
+    const id = e.target.value;
+    setNetwork(Number(id));
+  };
+
+  const handleInput = (e) => {
+    const msg = e.target.value;
+    setMessage(msg);
+  };
+
+  const switchNetwork = async () => {
+    try {
+      await library.provider.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: toHex(network) }]
+      });
+    } catch (switchError) {
+      if (switchError.code === 4902) {
+        try {
+          await library.provider.request({
+            method: "wallet_addEthereumChain",
+            params: [networkParams[toHex(network)]]
+          });
+        } catch (error) {
+          setError(error);
+        }
+      }
     }
   };
 
   return (
     <div className="App">
       <button onClick={connectWallet}>Connect Wallet</button>
-      <div>Connection Status: {!!account}</div>
-      <div>Wallet Address: {account}</div>
+      <button onClick={switchNetwork} isDisabled={!network}>Switch Network</button>
+      {/* <div>Connection Status: {!!account}</div>
+      <div>Wallet Address: {account}</div> */}
     </div>
   );
 

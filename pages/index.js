@@ -14,6 +14,8 @@ function Home(props) {
     actionId: "0x330C8452C879506f313D1565702560435b0fee4C", // <- use the address of your smart contract
     signal: "0x330C8452C879506f313D1565702560435b0fee4C", // <- Fill in with the user's wallet address here
   });*/
+
+
   const handleClick = async () => {
     console.log("top of handleClick", isLoggedIn);
     if (isLoggedIn) {
@@ -34,6 +36,7 @@ function Home(props) {
       setLoggedIn(isLoggedIn);
       const userMetadata = await magic.user.getMetadata();
       setUserData(userMetadata.email);
+      console.log('userData', userData);
       router.push("/User");
     }
   };
