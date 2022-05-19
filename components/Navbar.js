@@ -51,8 +51,10 @@ function Navbar(props) {
           <a className="nav-link">Team</a>
         </Link>
       </div>
-      <div className="items-end">
+      <div className="items-end flex flex-row space-x-3">
         <button className="tetiary-1">Join Us</button>
+        <button className="tetiary-1">Connect Wallet</button>
+      
       </div>
     </header>
   );

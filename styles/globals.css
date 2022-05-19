@@ -69,7 +69,7 @@ body{
     @apply font-inter font-bold text-[15px];
   }
   .form-text {
-     @apply font-inter font-bold laptop:text-[16px] text-[12px] capitalize;
+     @apply font-inter font-bold laptop:text-[16px] text-[12px];
   }
   .small-text {
     @apply font-poppins font-normal text-[13px] laptop:text-[15px];
@@ -179,7 +179,7 @@ body{
   }
   input.input-form-2 {
     @apply mb-2 w-full h-[52px] laptop:w-[262px] laptop:h-[52px] p-[15px] rounded-lg
-    bg-black/30 border-2 border-black/40 box-border form-text;
+    bg-white border-2 border-[#0D77F3] box-border form-text;
   }
   
   /*Progress Bar*/
