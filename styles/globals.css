@@ -178,7 +178,7 @@ body{
     @apply placeholder;
   }
   input.input-form-2 {
-    @apply mb-2 w-full h-[52px] laptop:w-[262px] laptop:h-[52px] p-[15px] rounded-lg
+    @apply mb-2 w-full h-[44px] laptop:w-[262px] laptop:h-[44px] p-[15px] rounded-lg
     bg-white border-2 border-[#0D77F3] box-border text-black ;
   }
   
