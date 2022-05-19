@@ -57,7 +57,7 @@ body{
     @apply font-inter font-light tracking-[-0.013em] laptop:text-[17px] text-[16px];
   }
   .sub-heading-2 {
-    @apply font-poppins font-medium laptop:text-[18px] text-[14px];
+    @apply font-poppins font-medium laptop:text-[14px] text-[12px];
   }
   .paragraph {
     @apply font-poppins font-normal tracking-[-0.015em] text-[18px] drop-shadow-sm;
@@ -179,7 +179,7 @@ body{
   }
   input.input-form-2 {
     @apply mb-2 w-full h-[52px] laptop:w-[262px] laptop:h-[52px] p-[15px] rounded-lg
-    bg-white border-2 border-[#0D77F3] box-border form-text;
+    bg-white border-2 border-[#0D77F3] box-border text-black ;
   }
   
   /*Progress Bar*/

@@ -12,13 +12,17 @@ import wave from "../public/img/waving-hand.png";
 import shop from "../public/img/shopping-bags.png";
 import bell from "../public/img/bell.png";
 import { useEffect } from "react";
+import { SearchIcon, LinkIcon, WarningIcon } from "@chakra-ui/icons";
 import Gradient from "../components/Gradient";
-// import {
-//   Switch,
-//   FormControl,
-//   FormLabel,
-//   ChakraProvider,
-// } from "@chakra-ui/react";
+import {
+  Switch,
+  FormControl,
+  FormLabel,
+  ChakraProvider,
+  Icon,
+} from "@chakra-ui/react";
+import { BiCopy } from "react-icons/bi";
+import { HiOutlineCurrencyDollar } from "react-icons/hi";
 
 function About(props) {
   useEffect(() => {
@@ -62,26 +66,19 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Copy
+                      <BiCopy />
+                      &nbsp;Copy
                     </button>
 
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Pay
+                      <HiOutlineCurrencyDollar/>&nbsp;Pay
                     </button>
-                    <div class="form-check form-switch">
-                      <input
-                        class="form-check-input appearance-none w-9 rounded-full float-left h-5 align-top bg-white bg-no-repeat bg-contain bg-gray-300 focus:outline-none cursor-pointer shadow-sm"
-                        type="checkbox"
-                        role="switch"
-                        id="flexSwitchCheckDefault56"
-                        checked
-                      />
-                    </div>
+                    <Switch colorScheme="green" id="email-alerts" />
                   </div>
                 </div>
                 <div className="mt-4">
@@ -99,16 +96,18 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Copy
+                      <BiCopy />
+                      &nbsp;Copy
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Pay
+                      <HiOutlineCurrencyDollar/>&nbsp;Pay
                     </button>
+                    <Switch colorScheme="green" id="email-alerts" />
                   </div>
                 </div>
                 <div className="mt-4 mb-11">
@@ -126,20 +125,22 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Copy
+                      <BiCopy />
+                      &nbsp;Copy
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Pay
+                      <HiOutlineCurrencyDollar/>&nbsp;Pay
                     </button>
+                    <Switch colorScheme="green" id="email-alerts" />
                   </div>
                 </div>
                 <div className="all-cap">
-                  Pay - Later
+                  &nbsp;Pay - Later
                   <Image src={alarm} width={35} height={35} />
                 </div>
                 <div className="mt-4 mb-11">
@@ -154,16 +155,17 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Pay
+                      <HiOutlineCurrencyDollar/>&nbsp;Pay
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
                       Hours
                     </button>
+                    <Switch colorScheme="green" id="email-alerts" />
                   </div>
                 </div>
                 <div className="all-cap">
@@ -185,16 +187,18 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Pay
+                      <HiOutlineCurrencyDollar/>&nbsp;Pay
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Connect
+                      <LinkIcon />
+                      &nbsp;Connect
                     </button>
+                    <Switch colorScheme="green" id="email-alerts" />
                   </div>
                 </div>
                 <div className="mt-4">
@@ -211,16 +215,19 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Copy
+                      <BiCopy />
+                      &nbsp;Copy
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Connect
+                      <LinkIcon />
+                      &nbsp; Connect
                     </button>
+                    <Switch colorScheme="green" id="email-alerts" />
                   </div>
                 </div>
                 <div className="mt-4 mb-16">
@@ -237,16 +244,19 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Copy
+                      <BiCopy />
+                      &nbsp;Copy
                     </button>
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Connect
+                      <LinkIcon />
+                      &nbsp;Connect
                     </button>
+                    <Switch colorScheme="green" id="email-alerts" />
                   </div>
                 </div>
                 <div className="all-cap">
@@ -265,10 +275,12 @@ function About(props) {
                     />
                     <button
                       type="button"
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      Copy
+                      <BiCopy />
+                      &nbsp;Copy
                     </button>
+                    <Switch colorScheme="green" id="email-alerts" />
                   </div>
                 </div>
                 <div className="px-4 mb-28 h-px w-full">
@@ -280,9 +292,9 @@ function About(props) {
                 </div>
                 <button
                   type="button"
-                  className="w-[71.17px] h-[38.96px] bg-[#77D672] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px] mb-20"
+                  className="w-[71.17px] h-[38.96px] bg-[#77D672] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px] mb-20"
                 >
-                  Buy <Image src={design} width={45} height={45} />
+                  Buy&nbsp; <SearchIcon />
                 </button>
               </div>
             </form>
