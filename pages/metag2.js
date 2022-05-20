@@ -11,7 +11,7 @@ import chain from "../public/img/link.png";
 import wave from "../public/img/waving-hand.png";
 import shop from "../public/img/shopping-bags.png";
 import bell from "../public/img/bell.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   SearchIcon,
   LinkIcon,
@@ -31,8 +31,169 @@ import {
 import { BiCopy } from "react-icons/bi";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { FcPlus } from "react-icons/fc";
+import { Framework } from "@superfluid-finance/sdk-core";
 
 function About(props) {
+  // const [flowrate, setflowRate] = useState("");
+  //const [reciever, setreciever] = useState("");
+  const [supertoken, setSupertoken] = useState("");
+  async function createNewFlow(recipient, flowRate) {
+    const SuperTokenx = "supper token address probably stored in a state";
+    const sf = await Framework.create({
+      networkName: "kovan",
+      provider: "ethersprovider",
+    });
+    try {
+      const createFlowOperation = sf.cfaV1.createFlow({
+        flowRate: flowRate,
+        receiver: recipient,
+        superToken: supertoken,
+        // userData?: string
+      });
+
+      console.log("Creating your stream...");
+
+      const result = await createFlowOperation.exec("ethers signer");
+      console.log(result);
+
+      console.log(
+        `Congrats - you've just created a money stream!
+      View Your Stream At: https://app.superfluid.finance/dashboard/${recipient}
+      Network: Kovan
+      Super Token: ${supertoken}
+      Sender: ${"signer address"}
+      Receiver: ${recipient},
+      FlowRate: ${flowRate}
+      `
+      );
+    } catch (error) {
+      console.log(
+        "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!"
+      );
+      console.error(error);
+    }
+  }
+  async function updateExistingFlow(recipient, flowRate) {
+    const sf = await Framework.create({
+      networkName: "kovan",
+      provider: "ethers provider",
+    });
+
+    try {
+      const updateFlowOperation = sf.cfaV1.updateFlow({
+        flowRate: flowRate,
+        receiver: recipient,
+        superToken: supertoken,
+        // userData?: string
+      });
+
+      console.log("Updating your stream...");
+
+      const result = await updateFlowOperation.exec("ethers signer");
+      console.log(result);
+
+      console.log(
+        `Congrats - you've just updated a money stream!
+      View Your Stream At: https://app.superfluid.finance/dashboard/${recipient}
+      Network: Kovan
+      Super Token: DAIx
+      Sender: 0xDCB45e4f6762C3D7C61a00e96Fb94ADb7Cf27721
+      Receiver: ${recipient},
+      New FlowRate: ${flowRate}
+      `
+      );
+    } catch (error) {
+      console.log(
+        "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!"
+      );
+      console.error(error);
+    }
+  }
+  async function deleteFlow(recipient) {
+    const sf = await Framework.create({
+      networkName: "kovan",
+      provider: "ethers provider",
+    });
+
+    const signer = "ethers signer";
+
+    try {
+      const deleteFlowOperation = sf.cfaV1.deleteFlow({
+        sender: "web3 account connected",
+        receiver: recipient,
+        superToken: supertoken,
+        // userData?: string
+      });
+
+      console.log("Deleting your stream...");
+
+      await deleteFlowOperation.exec(signer);
+
+      console.log(
+        `Congrats - you've just deleted your money stream!
+         Network: Kovan
+         Super Token: DAIx
+         Sender: 0xDCB45e4f6762C3D7C61a00e96Fb94ADb7Cf27721
+         Receiver: ${recipient}
+      `
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  async function deleteFlow(recipient) {
+    const sf = await Framework.create({
+      networkName: "kovan",
+      provider: customHttpProvider,
+    });
+
+    const signer = sf.createSigner({
+      privateKey:
+        "0xd2ebfb1517ee73c4bd3d209530a7e1c25352542843077109ae77a2c0213375f1",
+      provider: customHttpProvider,
+    });
+
+    const DAIxContract = await sf.loadSuperToken("fDAIx");
+    const DAIx = DAIxContract.address;
+
+    try {
+      const deleteFlowOperation = sf.cfaV1.deleteFlow({
+        sender: "0xDCB45e4f6762C3D7C61a00e96Fb94ADb7Cf27721",
+        receiver: recipient,
+        superToken: DAIx,
+        // userData?: string
+      });
+
+      console.log("Deleting your stream...");
+
+      await deleteFlowOperation.exec(signer);
+
+      console.log(
+        `Congrats - you've just deleted your money stream!
+       Network: Kovan
+       Super Token: DAIx
+       Sender: 0xDCB45e4f6762C3D7C61a00e96Fb94ADb7Cf27721
+       Receiver: ${recipient}
+    `
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  function calculateFlowRate(amount) {
+    if (typeof Number(amount) !== "number" || isNaN(Number(amount)) === true) {
+      alert("You can only calculate a flowRate based on a number");
+      return;
+    } else if (typeof Number(amount) === "number") {
+      if (Number(amount) === 0) {
+        return 0;
+      }
+      const amountInWei = ethers.BigNumber.from(amount);
+      const monthlyAmount = ethers.utils.formatEther(amountInWei.toString());
+      const calculatedFlowRate = monthlyAmount * 3600 * 24 * 30;
+      return calculatedFlowRate;
+    }
+  }
   useEffect(() => {
     document.querySelector("body").classList.add("about");
   });
