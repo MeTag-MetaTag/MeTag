@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="flex flex-col justify-center pr-12 items-start">
             <Link href="/">
               <a>
-                <h1 className="inter-font pb-6">CodeAsia</h1>
+                <h1 className="inter-font pb-6">MeTag</h1>
               </a>
             </Link>
             <div className="footer-link pb-1">Don&apos;t Code</div>
@@ -72,7 +72,7 @@ export default function Footer() {
       </div>
       <div className="flex basis-full footer-link  flex-row">
         <a className="items-start pr-[750px] pl-[45px]">
-          2021 © CodeAsia. All rights reserved.
+          2022 © MeTag. All rights reserved.
         </a>
         <a className="items-end pr-12" href="#">
           Privacy Policy

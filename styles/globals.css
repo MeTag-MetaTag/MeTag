@@ -246,6 +246,9 @@ body{
     mask-composite: exclude;
     z-index: -1;
   }
+  .behind{
+    z-index: 0;
+  }
 
   .border-gradient-1::before{
     background: var(--gradient-1) border-box;
