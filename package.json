@@ -1,34 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "metag",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@coinbase/cbpay-js": "^1.0.0",
-    "@coinbase/wallet-sdk": "^3.1.0",
-    "@walletconnect/web3-provider": "^1.7.8",
-    "dotenv": "^16.0.0",
-    "ethers": "^5.6.6",
-    "magic-sdk": "^8.1.1",
-    "next": "12.1.6",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.1.2",
-    "web3": "^1.7.3",
-    "web3modal": "^1.9.7"
-  },
-  "devDependencies": {
-    "eslint": "8.15.0",
-    "eslint-config-next": "12.1.6"
-  }
-=======
     "name": "metag",
     "version": "0.1.0",
     "private": true,
@@ -41,10 +11,12 @@
     "dependencies": {
         "@chakra-ui/icons": "^2.0.0",
         "@chakra-ui/react": "^2.0.2",
+        "@coinbase/wallet-sdk": "^3.1.0",
         "@emotion/react": "^11.9.0",
         "@emotion/styled": "^11.8.1",
         "@ethersproject/providers": "^5.6.5",
         "@metamask/detect-provider": "^1.2.0",
+        "@walletconnect/web3-provider": "^1.7.8",
         "@web3-react/core": "^6.1.9",
         "@web3-react/injected-connector": "^6.0.7",
         "@web3-react/walletconnect-connector": "^6.2.13",
@@ -59,7 +31,8 @@
         "react-icons": "^4.3.1",
         "semantic-ui-css": "^2.4.1",
         "semantic-ui-react": "^2.1.2",
-        "tw-elements": "^1.0.0-alpha12"
+        "tw-elements": "^1.0.0-alpha12",
+        "web3modal": "^1.9.7"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.7",
@@ -68,5 +41,4 @@
         "postcss": "^8.4.13",
         "tailwindcss": "^3.0.24"
     }
->>>>>>> 0b13b1ca14f5de5ea63acb34bd2e35de45f807a0
 }

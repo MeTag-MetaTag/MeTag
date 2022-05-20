@@ -19,10 +19,14 @@ function About(props) {
     document.querySelector("body").classList.add("about");
   });
 
+  function pullUpState() {
+    console.log('pull it up');
+  }
+
   return (
     <>
       <Gradient />
-      <Navbar />
+      <Navbar pullUpState={pullUpState}/>
       <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">
         <div className="box-border border-solid border-gradient-1 border-2 rounded-[20px] px-10 pt-12">
           <div className="flex flex-col">

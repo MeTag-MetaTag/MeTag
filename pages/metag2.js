@@ -11,7 +11,7 @@ import chain from "../public/img/link.png";
 import wave from "../public/img/waving-hand.png";
 import shop from "../public/img/shopping-bags.png";
 import bell from "../public/img/bell.png";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { SearchIcon, LinkIcon, WarningIcon } from "@chakra-ui/icons";
 import Gradient from "../components/Gradient";
 import {
@@ -24,6 +24,10 @@ import {
 import { BiCopy } from "react-icons/bi";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { FcPlus } from "react-icons/fc";
+
+const [metamaskAccount, setMetamaskAccount] = useState('');
+const [binanceAccount, setBinanceAccount] = useState('');
+const [coinbaseAccount, setCoinbaseAccount] = useState('');
 
 function About(props) {
   useEffect(() => {
@@ -66,6 +70,7 @@ function About(props) {
                       type="text"
                       placeholder="0x78..."
                       className="input-form-2 mr-6"
+                      value={metamaskAccount}
                     />
                     <button
                       type="button"
