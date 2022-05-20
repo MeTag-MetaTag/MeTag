@@ -13,6 +13,11 @@ import shop from "../public/img/shopping-bags.png";
 import bell from "../public/img/bell.png";
 import { useEffect } from "react";
 import Gradient from "../components/Gradient";
+import { SearchIcon} from "@chakra-ui/icons";
+import { DiReact } from "react-icons/di";
+import basic from "../public/img/Basic.png";
+import standard from "../public/img/Standard.png";
+import premium from "../public/img/Premium.png";
 
 function About(props) {
   useEffect(() => {
@@ -21,22 +26,25 @@ function About(props) {
 
   return (
     <>
-      <Gradient />
       <Navbar />
+<div className="flex flex-row justify-center items-center">
+      <div className="all-cap">Shop The Future Of Tag&apos;s</div>
+</div>
       <div className="flex flex-row justify-center items-center space-x-4">
       <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">
         <div className="box-border border-solid border-gradient-1 border-2 rounded-[20px] px-10 pt-12">
           <div className="flex flex-col justify-center items-center">
-            <div>Sign Up</div>
-            <p className="">Can you enter your gmail address </p>
-            <p>and we will send a magic link to </p>
-            <p>complete registration</p>
-            <input
-              type="text"
-              placeholder="vansh@metag.io"
-              className="input-form-2"
-            />
-            <button className="tetiary-1">Continue</button>{" "}
+          <div className="all-cap">MeTag Basics</div>
+          <Image src={basic} alt="image" />
+          <div className="px-4 mb-7 mt-12 h-px w-full">
+              <Image src={Line} layout="responsive" alt="image" />
+            </div>
+            <button
+                  type="button"
+                  className="w-[124px] h-[44px] bg-[#77D672] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px] mb-20"
+                >
+                  Buy&nbsp; <DiReact />
+                </button>
           </div>
         </div>
       </div>
@@ -44,27 +52,36 @@ function About(props) {
       <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">
         <div className="box-border border-solid border-gradient-1 border-2 rounded-[20px] px-10 pt-12">
           <div className="flex flex-col justify-center items-center">
-            <div>Sign Up</div>
-            <p className="">We have sent you some important </p>
-            <p>details to you mail </p>
+          <div className="all-cap">MeTag Standard</div>
+          <Image src={standard}  alt="image" />
+          <div className="px-4 mb-7 mt-12 h-px w-full">
+              <Image src={Line} layout="responsive" alt="image" />
+            </div>
+            <button
+                  type="button"
+                  className="w-[124px] h-[44px] bg-[#77D672] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px] mb-20"
+                >
+                  Buy&nbsp; <DiReact />
+                </button>
           </div>
-          <div className="">example@gmail.com</div>
         </div>
       </div>
 
       <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">
         <div className="box-border border-solid border-gradient-1 border-2 rounded-[20px] px-10 pt-12">
           <div className="flex flex-col justify-center items-center">
-            <div>Sign In</div>
-            <p className="">Welcome back, enter your gmail </p>
-            <p> address to login </p>
+          <div className="all-cap">MeTag Premium</div>
+          <Image src={premium}  alt="image" />
+          <div className="px-4 mb-7 mt-12 h-px w-full">
+              <Image src={Line} layout="responsive" alt="image" />
+            </div>
+            <button
+                  type="button"
+                  className="w-[124px] h-[44px] bg-[#77D672] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px] mb-20"
+                >
+                  Buy&nbsp; <DiReact />
+                </button>
           </div>
-          <input
-            type="text"
-            placeholder="vansh@metag.io"
-            className="input-form-2"
-          />
-          <button className="tetiary-1">Continue</button>
         </div>
       </div>
       </div>
