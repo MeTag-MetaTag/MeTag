@@ -32,6 +32,7 @@ import { BiCopy } from "react-icons/bi";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { FcPlus } from "react-icons/fc";
 import { Framework } from "@superfluid-finance/sdk-core";
+import { ethers } from "ethers";
 
 function About(props) {
   // const [flowrate, setflowRate] = useState("");
