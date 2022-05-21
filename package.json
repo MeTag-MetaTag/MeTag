@@ -11,10 +11,12 @@
     "dependencies": {
         "@chakra-ui/icons": "^2.0.0",
         "@chakra-ui/react": "^2.0.2",
+        "@coinbase/wallet-sdk": "^3.1.0",
         "@emotion/react": "^11.9.0",
         "@emotion/styled": "^11.8.1",
         "@ethersproject/providers": "^5.6.5",
         "@metamask/detect-provider": "^1.2.0",
+        "@walletconnect/web3-provider": "^1.7.8",
         "@superfluid-finance/sdk-core": "^0.4.2",
         "@web3-react/core": "^6.1.9",
         "@web3-react/injected-connector": "^6.0.7",
@@ -30,7 +32,8 @@
         "react-icons": "^4.3.1",
         "semantic-ui-css": "^2.4.1",
         "semantic-ui-react": "^2.1.2",
-        "tw-elements": "^1.0.0-alpha12"
+        "tw-elements": "^1.0.0-alpha12",
+        "web3modal": "^1.9.7"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.7",

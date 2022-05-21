@@ -11,7 +11,12 @@ import chain from "../public/img/link.png";
 import wave from "../public/img/waving-hand.png";
 import shop from "../public/img/shopping-bags.png";
 import bell from "../public/img/bell.png";
+<<<<<<< HEAD
+import Link from "next/link";
+import { useState, useEffect } from "react";
+=======
 import { useEffect, useState } from "react";
+>>>>>>> main
 import {
   SearchIcon,
   LinkIcon,
@@ -31,8 +36,14 @@ import {
 import { BiCopy } from "react-icons/bi";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { FcPlus } from "react-icons/fc";
+<<<<<<< HEAD
+// const [metamaskAccount, setMetamaskAccount] = useState('');
+// const [binanceAccount, setBinanceAccount] = useState('');
+// const [coinbaseAccount, setCoinbaseAccount] = useState('');
+=======
 import { Framework } from "@superfluid-finance/sdk-core";
 import { ethers } from "ethers";
+>>>>>>> main
 
 function About(props) {
   // const [flowrate, setflowRate] = useState("");
@@ -200,6 +211,7 @@ function About(props) {
                       type="text"
                       placeholder="0x78..."
                       className="input-form-2 mr-6"
+                      // value={metamaskAccount}
                     />
                     <button
                       type="button"
@@ -291,6 +303,7 @@ function About(props) {
                       name="firstName"
                       type="text"
                       className="input-form-2 mr-6"
+                      placeholder="3KYz..."
                       required
                     />
 
@@ -298,10 +311,10 @@ function About(props) {
                       type="button"
                       className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 behind py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      <Select placeholder="Hours" variant="unstyled">
-                        <option value="option1"></option>
-                        <option value="option2"></option>
-                        <option value="option3"></option>
+                      <Select color='black' placeholder="Hours" variant="unstyled">
+                        <option value="option1">1 Hour</option>
+                        <option value="option2">2 Hour</option>
+                        <option value="option3">3 Hour</option>
                       </Select>
                     </button>
                     <button
@@ -310,6 +323,28 @@ function About(props) {
                     >
                       <HiOutlineCurrencyDollar />
                       &nbsp;Pay
+                    </button>
+                    <Switch colorScheme="green" id="email-alerts" />
+                  </div>
+                  <div className="flex flex-row justify-center items-center">
+                    <input
+                      id="firstName"
+                      name="firstName"
+                      type="text"
+                      className="input-form-2 mr-6"
+                      placeholder="Amount"
+                      required
+                    />
+
+                    <button
+                      type="button"
+                      className="w-[242px] h-[44px] bg-[#FF8D4D] sub-heading-2 behind py-1 px-1 rounded-[6px]  mr-[18px]"
+                    >
+                      <Select color='black' placeholder="Select Token" variant="unstyled">
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                      </Select>
                     </button>
                     <Switch colorScheme="green" id="email-alerts" />
                   </div>
@@ -464,18 +499,21 @@ function About(props) {
                   Get Your MeTag At
                   <Image src={shop} width={30} height={30} />
                 </div>
+                <Link href="/marketplace">
+                
                 <button
                   type="button"
                   className="w-[124px] h-[44px] bg-[#77D672] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px] mb-20"
                 >
                   Buy&nbsp; <SearchIcon />
                 </button>
+                </Link>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

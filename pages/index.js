@@ -1,6 +1,5 @@
 import React from "react";
 import Home from "./Home";
-// import { ChakraProvider } from '@chakra-ui/react';
 import { Button } from "semantic-ui-react";
 import { useRouter } from "next/router";
 import Head from "next/head";

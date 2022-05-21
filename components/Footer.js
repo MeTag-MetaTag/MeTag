@@ -19,10 +19,8 @@ export default function Footer() {
                 <h1 className="inter-font pb-6">MeTag</h1>
               </a>
             </Link>
-            <div className="footer-link pb-1">Don&apos;t Code</div>
-            <div className="footer-link pb-[39px]">
-              {" "}
-              Alone Code with a Community.
+            <div className="footer-link pb-1">
+              Changing the future of Sharing
             </div>
 
             <div className="flex space-x-12">

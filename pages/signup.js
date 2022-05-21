@@ -67,7 +67,7 @@ function About(props) {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

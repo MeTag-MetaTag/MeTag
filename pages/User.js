@@ -1,63 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "semantic-ui-css/semantic.min.css";
 import { Button, Form, Container } from "semantic-ui-react";
 import { Magic } from "magic-sdk";
-// import { useRouter } from 'next/router';
-//import styles from "../styles/Home.module.css";
-import { ethers } from "ethers";
+import { Contract, providers, utils, ethers } from "ethers";
+import Web3Modal from "web3modal";
+import CoinbaseWalletSDK from '@coinbase/wallet-sdk';
+import WalletConnectProvider from "@walletconnect/web3-provider";
 
-const User = (props) => {
-  const [accounts, setAccounts] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [defaultAccount, setDefaultAccount] = useState("");
-  const [userBalance, setUserBalance] = useState("");
-  const [connectButtonText, setConnButtonText] = useState("Connect Wallet");
+const User = () => {
+  const providerOptionsObj = {
+    walletconnect: {
+      package: WalletConnectProvider, // required
+      options: {
+        infuraId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID // required
+      }
+    },
+      binancechainwallet: {
+        package: true
+      },
+      coinbasewallet: {
+        package: CoinbaseWalletSDK, // Required
+        options: {
+          appName: "MeTag", // Required
+          infuraId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID, // Required
+          chainId: 1, // Optional. It defaults to 1 if not provided
+          darkMode: true // Optional. Use dark theme, defaults to false
+        }
+      },
+    };
 
-  const connectWalletHandler = async () => {
-    if (window.ethereum) {
-      //   let result = await window.ethereum.request({method: "eth_requestAccounts"});
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      let accounts = await provider.send("eth_requestAccounts", []);
-      console.log("accounts", accounts);
+    const [chainId, setChainId] = useState(1);
+    const [address, setAddress] = useState("");
+    const [provider, setProvider] = useState();
 
-      accountChangedHandler(accounts[0]);
-    } else {
-      setErrorMessage("Install MetaMask");
+    // function reset() {
+    //   console.log("reset");
+    //   setAddress("");
+    //   setProvider(undefined);
+    //   web3Modal.clearCachedProvider();
+    // }
+
+    async function handleClick() {  
+      const web3Modal = new Web3Modal({
+        network: "mainnet", // optional
+        providerOptions: providerOptionsObj
+    }); 
+        await web3Modal.clearCachedProvider();
+        const instance = await web3Modal.connect();
+        const provider = new ethers.providers.Web3Provider(instance);
+        const signer = provider.getSigner();
+        // setAddress();
+        // setChainId();
+        // setProvider();
     }
-  };
 
-  const accountChangedHandler = (newAccount) => {
-    setDefaultAccount(newAccount);
-    getUserBalance(newAccount.toString());
-  };
-
-  const getUserBalance = async (address) => {
-    const balance = await window.ethereum.request({
-      method: "eth_getBalance",
-      params: [address, "latest"],
-    });
-    setUserBalance(ethers.utils.formatEther(balance));
-  };
-
-  const chainChangedHandler = () => {
-    window.location.reload();
-  };
-
-  if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
-    window.ethereum.on("accountsChanged", accountChangedHandler);
-    window.ethereum.on("chainChanged", chainChangedHandler);
-  }
 
   return (
     <div>
       <div>Welcome User</div>
-      <Button onClick={connectWalletHandler}>Connect to MetaMask</Button>
-      <div>
-        <h3>Address: {defaultAccount}</h3>
-      </div>
-      <div>
-        <h3>Balance: {userBalance}</h3>
-      </div>
+      <Button onClick={handleClick}>Connect</Button>
     </div>
   );
 };

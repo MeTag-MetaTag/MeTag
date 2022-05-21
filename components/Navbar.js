@@ -1,9 +1,37 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Web3Modal from "web3modal";
+import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
+import WalletConnect from "@walletconnect/web3-provider";
+import { ethers } from 'ethers';
 
 function Navbar(props) {
   const [hideNav, setHideNav] = useState(true);
   const [screenWidth, setScreenWidth] = useState();
+  const [provider, setProvider] = useState();
+  const [library, setLibrary] = useState();
+  const [account, setAccount] = useState('');
+  const [network, setNetwork] = useState();
+  const [chainId, setChainId] = useState();
+  const providerOptions = {
+      binancechainwallet: {
+        package: true
+      },
+      coinbasewallet: {
+        package: CoinbaseWalletSDK,
+        options: {
+          appName: "fingers-crossed",
+          infuraId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID
+        }
+      },
+      walletconnect: {
+        package: WalletConnect,
+        options: {
+          infuraId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID
+        }
+      }
+  };
+
   const openNav = () => {
     setHideNav(!hideNav);
   };
@@ -24,6 +52,29 @@ function Navbar(props) {
     });
   }, []);
 
+  const connectWallet = async () => {
+    const web3Modal = new Web3Modal({
+      providerOptions
+    });
+    // web3Modal.clearCachedProvider();
+    try {
+      console.log('waiting for provider');
+      const provider = await web3Modal.connect();
+      const library = new ethers.providers.Web3Provider(provider);
+      const accounts = await library.listAccounts();
+      const network = await library.getNetwork();
+      setProvider(provider);
+      setLibrary(library);
+      if (accounts) setAccount(accounts[0]);
+      setNetwork(network);
+      setChainId(network.chainId);
+      console.log('args', accounts[0], library.connection.url);
+      props.pullUpState(accounts[0], library);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <header className="flex flex-wrap justify-center items-center sticky top-0 bg-transparent backdrop-blur-lg z-[99] transition duration-200 py-0.5 px-16">
       <div className="flex mr-auto py-2 pl-6">
@@ -41,7 +92,7 @@ function Navbar(props) {
         <Link href="/about">
           <a className="nav-link">About Us</a>
         </Link>
-        <Link href="/events">
+        <Link href="/marketplace">
           <a className="nav-link">Shop</a>
         </Link>
         <Link href="/contact">
@@ -52,9 +103,7 @@ function Navbar(props) {
         </Link>
       </div>
       <div className="items-end flex flex-row space-x-3">
-        <button className="tetiary-1">Join Us</button>
-        <button className="tetiary-1">Connect Wallet</button>
-      
+        <button className="tetiary-1" onClick={connectWallet}>Connect Wallet</button>
       </div>
     </header>
   );
