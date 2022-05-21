@@ -173,6 +173,7 @@ function About(props) {
                       name="firstName"
                       type="text"
                       className="input-form-2 mr-6"
+                      placeholder="3KYz..."
                       required
                     />
 
@@ -192,6 +193,28 @@ function About(props) {
                     >
                       <HiOutlineCurrencyDollar />
                       &nbsp;Pay
+                    </button>
+                    <Switch colorScheme="green" id="email-alerts" />
+                  </div>
+                  <div className="flex flex-row justify-center items-center">
+                    <input
+                      id="firstName"
+                      name="firstName"
+                      type="text"
+                      className="input-form-2 mr-6"
+                      placeholder="Amount"
+                      required
+                    />
+
+                    <button
+                      type="button"
+                      className="w-[242px] h-[44px] bg-[#FF8D4D] sub-heading-2 behind py-1 px-1 rounded-[6px]  mr-[18px]"
+                    >
+                      <Select placeholder="Select Token" variant="unstyled">
+                        <option value="option1"></option>
+                        <option value="option2"></option>
+                        <option value="option3"></option>
+                      </Select>
                     </button>
                     <Switch colorScheme="green" id="email-alerts" />
                   </div>
