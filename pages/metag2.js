@@ -12,7 +12,6 @@ import wave from "../public/img/waving-hand.png";
 import shop from "../public/img/shopping-bags.png";
 import bell from "../public/img/bell.png";
 import { useState, useEffect } from "react";
-import { useEffect } from "react";
 import {
   SearchIcon,
   LinkIcon,

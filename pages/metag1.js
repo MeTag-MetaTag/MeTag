@@ -32,20 +32,17 @@ function About(props) {
       to: account,
       value: ethers.utils.parseEther(".1")
     });
-    console.log('wallet*', wallet)
-    console.log('account*', account);
     setLibrary(library);
-
     if (wallet == 'metamask') {
       setMetaMaskAccount(account);
     }
   }
 
-  const handleClick = async () => {
+  const pay = async () => {
     const signer = await library.getSigner();
     signer.sendTransaction({
       to: metaMaskAccount,
-      value: ethers.utils.parseEther(".1")
+      value: ethers.utils.parseEther(".001")
     });
   }
 
@@ -87,7 +84,7 @@ function About(props) {
                     <button
                       type="button"
                       className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
-                      onClick={handleClick}
+                      onClick={pay}
                     >
                       Pay
                     </button>
