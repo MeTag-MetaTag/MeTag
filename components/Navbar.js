@@ -92,7 +92,7 @@ function Navbar(props) {
         <Link href="/about">
           <a className="nav-link">About Us</a>
         </Link>
-        <Link href="/events">
+        <Link href="/marketplace">
           <a className="nav-link">Shop</a>
         </Link>
         <Link href="/contact">
@@ -103,7 +103,6 @@ function Navbar(props) {
         </Link>
       </div>
       <div className="items-end flex flex-row space-x-3">
-        <button className="tetiary-1">Join Us</button>
         <button className="tetiary-1" onClick={connectWallet}>Connect Wallet</button>
       </div>
     </header>
