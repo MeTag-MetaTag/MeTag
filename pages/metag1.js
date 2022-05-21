@@ -66,7 +66,7 @@ function About(props) {
   function pullUpState() {
     console.log("pull it up");
 
-  }
+  }}
 
   return (
     <>
@@ -103,7 +103,7 @@ function About(props) {
                       type="text"
                       placeholder="0x78..."
                       className="input-form-2 mr-6"
-                      value={metamaskAccount}
+                      value={metaMaskAccount}
                     />
                     <button
                       type="button"
