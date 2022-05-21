@@ -13,7 +13,6 @@ function Navbar(props) {
   const [account, setAccount] = useState('');
   const [network, setNetwork] = useState();
   const [chainId, setChainId] = useState();
-  console.log('props', props);
   const providerOptions = {
       binancechainwallet: {
         package: true
@@ -64,14 +63,13 @@ function Navbar(props) {
       console.log('provider', provider);
       const library = new ethers.providers.Web3Provider(provider);
       const accounts = await library.listAccounts();
-      console.log('account', account[0]);
-      console.log('library', library);
       const network = await library.getNetwork();
       setProvider(provider);
       setLibrary(library);
       if (accounts) setAccount(accounts[0]);
       setNetwork(network);
       setChainId(network.chainId);
+      props.pullUpState(accounts[0], library);
     } catch (error) {
       console.error(error);
     }

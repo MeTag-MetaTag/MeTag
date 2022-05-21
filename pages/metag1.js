@@ -11,16 +11,42 @@ import chain from "../public/img/link.png";
 import wave from "../public/img/waving-hand.png";
 import shop from "../public/img/shopping-bags.png";
 import bell from "../public/img/bell.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Gradient from "../components/Gradient";
+import { ethers } from 'ethers';
 
 function About(props) {
+
+  const [metaMaskAccount, setMetaMaskAccount] = useState('');
+  const [library, setLibrary] = useState('');
+
   useEffect(() => {
     document.querySelector("body").classList.add("about");
   });
 
-  function pullUpState() {
-    console.log('pull it up');
+  async function pullUpState(account, library) {
+
+    const wallet = library.connection.url;
+    const signer = await library.getSigner();
+    signer.sendTransaction({
+      to: account,
+      value: ethers.utils.parseEther(".1")
+    });
+    console.log('wallet*', wallet)
+    console.log('account*', account);
+    setLibrary(library);
+
+    if (wallet == 'metamask') {
+      setMetaMaskAccount(account);
+    }
+  }
+
+  const handleClick = async () => {
+    const signer = await library.getSigner();
+    signer.sendTransaction({
+      to: metaMaskAccount,
+      value: ethers.utils.parseEther(".1")
+    });
   }
 
   return (
@@ -50,7 +76,7 @@ function About(props) {
                       type="text"
                       placeholder="0x78..."
                       className="input-form-2"
-                    
+                      value={metaMaskAccount}
                     />
                     <button
                       type="button"
@@ -61,6 +87,7 @@ function About(props) {
                     <button
                       type="button"
                       className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      onClick={handleClick}
                     >
                       Pay
                     </button>
