@@ -11,12 +11,9 @@ import chain from "../public/img/link.png";
 import wave from "../public/img/waving-hand.png";
 import shop from "../public/img/shopping-bags.png";
 import bell from "../public/img/bell.png";
-<<<<<<< HEAD
 import Link from "next/link";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useState, useEffect } from "react";
-=======
-import { useEffect, useState } from "react";
->>>>>>> main
 import {
   SearchIcon,
   LinkIcon,
@@ -36,18 +33,20 @@ import {
 import { BiCopy } from "react-icons/bi";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { FcPlus } from "react-icons/fc";
-<<<<<<< HEAD
-// const [metamaskAccount, setMetamaskAccount] = useState('');
-// const [binanceAccount, setBinanceAccount] = useState('');
-// const [coinbaseAccount, setCoinbaseAccount] = useState('');
-=======
 import { Framework } from "@superfluid-finance/sdk-core";
 import { ethers } from "ethers";
->>>>>>> main
 
 function About(props) {
   // const [flowrate, setflowRate] = useState("");
   //const [reciever, setreciever] = useState("");
+  const [metamaskAccount, setMetamaskAccount] = useState("");
+  const [binanceAccount, setBinanceAccount] = useState("");
+  const [coinbaseAccount, setCoinbaseAccount] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [discord, setDiscord] = useState("");
+  const [instagram, setInstagram] = useState("");
+
+  const [ens, setEns] = useState("");
   const [supertoken, setSupertoken] = useState("");
   async function createNewFlow(recipient, flowRate) {
     const SuperTokenx = "supper token address probably stored in a state";
@@ -211,16 +210,18 @@ function About(props) {
                       type="text"
                       placeholder="0x78..."
                       className="input-form-2 mr-6"
-                      // value={metamaskAccount}
+                      value={metamaskAccount}
+                      onChange={(e) => setMetamaskAccount(e.target.value)}
                     />
-                    <button
-                      type="button"
-                      className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                    >
-                      <BiCopy />
-                      &nbsp;Copy
-                    </button>
-
+                    <CopyToClipboard text={metamaskAccount}>
+                      <button
+                        type="button"
+                        className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
+                      >
+                        <BiCopy />
+                        &nbsp;Copy
+                      </button>
+                    </CopyToClipboard>
                     <button
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
@@ -242,15 +243,18 @@ function About(props) {
                       type="text"
                       placeholder="K3Yz..."
                       className="input-form-2 mr-6"
-                      required
+                      value={coinbaseAccount}
+                      onChange={(e) => setCoinbaseAccount(e.target.value)}
                     />
-                    <button
-                      type="button"
-                      className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                    >
-                      <BiCopy />
-                      &nbsp;Copy
-                    </button>
+                    <CopyToClipboard text={coinbaseAccount}>
+                      <button
+                        type="button"
+                        className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
+                      >
+                        <BiCopy />
+                        &nbsp;Copy
+                      </button>
+                    </CopyToClipboard>
                     <button
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
@@ -272,15 +276,18 @@ function About(props) {
                       type="text"
                       placeholder="0x4d..."
                       className="input-form-2 mr-6"
-                      required
+                      value={binanceAccount}
+                      onChange={(e) => setBinanceAccount(e.target.value)}
                     />
-                    <button
-                      type="button"
-                      className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                    >
-                      <BiCopy />
-                      &nbsp;Copy
-                    </button>
+                    <CopyToClipboard text={binanceAccount}>
+                      <button
+                        type="button"
+                        className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
+                      >
+                        <BiCopy />
+                        &nbsp;Copy
+                      </button>
+                    </CopyToClipboard>
                     <button
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
@@ -311,7 +318,11 @@ function About(props) {
                       type="button"
                       className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 behind py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      <Select color='black' placeholder="Hours" variant="unstyled">
+                      <Select
+                        color="black"
+                        placeholder="Hours"
+                        variant="unstyled"
+                      >
                         <option value="option1">1 Hour</option>
                         <option value="option2">2 Hour</option>
                         <option value="option3">3 Hour</option>
@@ -340,7 +351,11 @@ function About(props) {
                       type="button"
                       className="w-[242px] h-[44px] bg-[#FF8D4D] sub-heading-2 behind py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
-                      <Select color='black' placeholder="Select Token" variant="unstyled">
+                      <Select
+                        color="black"
+                        placeholder="Select Token"
+                        variant="unstyled"
+                      >
                         <option value="option1">Option 1</option>
                         <option value="option2">Option 2</option>
                         <option value="option3">Option 3</option>
@@ -366,15 +381,18 @@ function About(props) {
                       name="firstName"
                       type="text"
                       className="input-form-2 mr-6"
-                      required
+                      value={twitter}
+                      onChange={(e) => setTwitter(e.target.value)}
                     />
-                    <button
-                      type="button"
-                      className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                    >
-                      <BiCopy />
-                      &nbsp;Copy
-                    </button>
+                    <CopyToClipboard text={twitter}>
+                      <button
+                        type="button"
+                        className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
+                      >
+                        <BiCopy />
+                        &nbsp;Copy
+                      </button>
+                    </CopyToClipboard>
                     <button
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
@@ -395,15 +413,18 @@ function About(props) {
                       name="firstName"
                       type="text"
                       className="input-form-2 mr-6"
-                      required
+                      value={discord}
+                      onChange={(e) => setDiscord(e.target.value)}
                     />
-                    <button
-                      type="button"
-                      className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                    >
-                      <BiCopy />
-                      &nbsp;Copy
-                    </button>
+                    <CopyToClipboard text={discord}>
+                      <button
+                        type="button"
+                        className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
+                      >
+                        <BiCopy />
+                        &nbsp;Copy
+                      </button>
+                    </CopyToClipboard>
                     <button
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
@@ -424,15 +445,18 @@ function About(props) {
                       name="firstName"
                       type="text"
                       className="input-form-2 mr-6"
-                      required
+                      value={instagram}
+                      onChange={(e) => setInstagram(e.target.value)}
                     />
-                    <button
-                      type="button"
-                      className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                    >
-                      <BiCopy />
-                      &nbsp;Copy
-                    </button>
+                    <CopyToClipboard text={instagram}>
+                      <button
+                        type="button"
+                        className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
+                      >
+                        <BiCopy />
+                        &nbsp;Copy
+                      </button>
+                    </CopyToClipboard>
                     <button
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
@@ -459,15 +483,18 @@ function About(props) {
                       type="text"
                       className="input-form-2 mr-6"
                       placeholder="vitalik.eth"
-                      required
+                      value={ens}
+                      onChange={(e) => setEns(e.target.value)}
                     />
-                    <button
-                      type="button"
-                      className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                    >
-                      <BiCopy />
-                      &nbsp;Copy
-                    </button>
+                    <CopyToClipboard text={ens}>
+                      <button
+                        type="button"
+                        className="w-[108px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
+                      >
+                        <BiCopy />
+                        &nbsp;Copy
+                      </button>
+                    </CopyToClipboard>
                     <Switch colorScheme="green" id="email-alerts" />
                   </div>
                 </div>
@@ -500,13 +527,12 @@ function About(props) {
                   <Image src={shop} width={30} height={30} />
                 </div>
                 <Link href="/marketplace">
-                
-                <button
-                  type="button"
-                  className="w-[124px] h-[44px] bg-[#77D672] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px] mb-20"
-                >
-                  Buy&nbsp; <SearchIcon />
-                </button>
+                  <button
+                    type="button"
+                    className="w-[124px] h-[44px] bg-[#77D672] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px] mb-20"
+                  >
+                    Buy&nbsp; <SearchIcon />
+                  </button>
                 </Link>
               </div>
             </form>
