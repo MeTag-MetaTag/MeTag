@@ -56,7 +56,6 @@ function Navbar(props) {
     const web3Modal = new Web3Modal({
       providerOptions
     });
-    // web3Modal.clearCachedProvider();
     try {
       console.log('waiting for provider');
       const provider = await web3Modal.connect();
