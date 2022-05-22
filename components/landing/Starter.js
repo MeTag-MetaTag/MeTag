@@ -13,7 +13,7 @@ export default function Starter() {
     <div
       // ref={element}
       className="relative flex flex-col pt-24
-                      laptop:grid laptop:grid-cols-2"
+                      laptop:grid laptop:grid-cols-2 space-x-32"
     >
       <div
         className="relative flex flex-col mb-6 justify-center
@@ -31,34 +31,31 @@ export default function Starter() {
 
       <div
         className="relative flex flex-col items-center
-                        laptop:block laptop:order-1"
+                        laptop:block laptop:order-1 pt-12"
       >
         <div
           className="relative flex flex-col items-center
                           laptop:items-start "
         >
-          <h5 className="font-cabin font-bold laptop:text-[20px] text-[18px] capitalize">
+          <h5 className="font-cabin font-bold laptop:text-[20px] text-[18px] capitalize pb-2">
             Sharing Public Address
           </h5>
-          <h4 className="mb-1 font-inter font-bold laptop:text-[24px] text-[14px] capitalize">
+          <h4 className="mb-1 font-inter font-bold laptop:text-[24px] text-[14px] capitalize pb-2">
             Not An Hassle Anymore
           </h4>
-          <h1 className="mb-1 font-inter font-bold text-gradient-1 block laptop:text-[34px] text-[20px] capitalize">
+          <h1 className="mb-1 font-inter font-bold text-gradient-1 block laptop:text-[34px] text-[20px] capitalize pb-2">
             Building The Future Of Tags
           </h1>
-          <h4 className="relative flex flex-row mb-3 font-inter font-bold laptop:text-[24px] text-[14px] capitalize">
-            Join Us In The Journey 🚀
+          <h4 className="relative flex flex-row mb-3 font-inter font-bold laptop:text-[24px] text-[14px] capitalize pb-4">
+            Join Us In The Journey
             <p className="h-8 w-8 ml-2">
               <Image src={rocket} alt="image" />
             </p>
           </h4>
         </div>
         <motion.button whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
-          <button
-            className="primary flex flex-row justify-center items-center rounded-xl
-    font-inter font-bold capitalize text-white tetiary-1 px-[30px] border-gradient-1  text-[14px] h-[45px] laptop:text-[16px] laptop:h-[45px] bg-transparent"
-          >
-            Join community&nbsp;
+          <button className="text-white tetiary-1 border-2 border-white">
+            Join Community&nbsp;
             <Image width={20} height={20} src={party} alt="image" />
           </button>
         </motion.button>
