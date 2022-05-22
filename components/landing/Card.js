@@ -12,7 +12,7 @@ export default function Card() {
   return (
     <div
       // ref={element}
-      className="relative flex flex-col items-center gap-10 mt-40
+      className="relative flex flex-col items-center gap-10 mt-56
                       laptop:flex-row laptop:justify-between px-16"
     >
       <div className="relative w-64 laptop:w-80">

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 // import { useScroll } from "../useScroll";
-import communityMsg from "../../public/img/landing/community-msg.svg";
+import communityMsg from "../../public/img/landing/poipoi.png";
 import rocket from "../../public/img/emoji/rocket.png";
 import party from "../../public/img/emoji/party-popper.png";
 import { headerAnimation, imageAnimation } from "../Animations";
@@ -25,13 +25,14 @@ export default function Starter() {
           variants={headerAnimation}
           transition={{ delay: 0.2, type: "tween" }}
         >
+          
           <Image src={communityMsg} alt="image" />
         </motion.div>
       </div>
 
       <div
         className="relative flex flex-col items-center
-                        laptop:block laptop:order-1 pt-12"
+                        laptop:block laptop:order-1 pt-28"
       >
         <div
           className="relative flex flex-col items-center
@@ -55,7 +56,7 @@ export default function Starter() {
         </div>
         <motion.button whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
           <button className="text-white tetiary-1 border-2 border-white">
-            Join Community&nbsp;
+            Join Waitlist&nbsp;
             <Image width={20} height={20} src={party} alt="image" />
           </button>
         </motion.button>

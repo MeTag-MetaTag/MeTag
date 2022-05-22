@@ -73,9 +73,7 @@ function Home(props) {
         <Starter />
         <Card />
         <Card1 />
-        <Card2 />
-        <Card3 />
-        <Form className={styles.login}>
+        {/* <Form className={styles.login}>
           <Form.Field>
             <label className={styles.signUp}>Sign up</label>
             <label className={styles.bodyText}>
@@ -96,12 +94,13 @@ function Home(props) {
               Continue
             </button>
           )}
-        </Form>
+        </Form> */}
         {!isConnected ? (
           <button onClick={handleConnect}>Connect Wallet</button>
         ) : (
           <button onClick={handleDisconnect}>Connect Wallet</button>
-        )}
+      )}
+      <Footer/>
     </div>
   );
 }
