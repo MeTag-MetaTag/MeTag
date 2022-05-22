@@ -68,7 +68,6 @@ function Navbar(props) {
       if (accounts) setAccount(accounts[0]);
       setNetwork(network);
       setChainId(network.chainId);
-      console.log('args', accounts[0], library.connection.url);
       props.pullUpState(accounts[0], library);
     } catch (error) {
       console.error(error);
@@ -103,7 +102,7 @@ function Navbar(props) {
         </Link>
       </div>
       <div className="items-end flex flex-row space-x-3">
-        <button className="tetiary-1" onClick={connectWallet}>Connect Wallet</button>
+        <button className="tetiary-1 text-white" onClick={connectWallet}>Connect Wallet</button>
       </div>
     </header>
   );
