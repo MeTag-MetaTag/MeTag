@@ -6,6 +6,7 @@ import { Contract, providers, utils, ethers } from "ethers";
 import Web3Modal from "web3modal";
 import CoinbaseWalletSDK from '@coinbase/wallet-sdk';
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import EpnsSDK from "@epnsproject/backend-sdk" 
 
 const User = () => {
   const providerOptionsObj = {
@@ -53,6 +54,8 @@ const User = () => {
         // setChainId();
         // setProvider();
     }
+
+    const  CHANNEL_PK = process.env.PRIVATEKEY
 
 
   return (
