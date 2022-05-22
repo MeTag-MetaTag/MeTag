@@ -16,7 +16,7 @@ function About(props) {
   });
 
   return (
-    <>
+    <div className="bg-[#040D21]">
       <Navbar />
 
       <div className="flex flex-col items-center text-center mt-28">
@@ -214,7 +214,7 @@ function About(props) {
       </div>
       {/* <Footer1 /> */}
       <Footer />
-    </>
+    </div>
   );
 }
 

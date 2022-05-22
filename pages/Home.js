@@ -10,6 +10,7 @@ import Navbar from '../components/Navbar';
 // import Footer1 from "../components/Footer1";
 import Gradient from "../components/landing/Gradient";
 import Footer from "../components/Footer";
+import Footer1 from "../components/Footer1";
 import Starter from "../components/landing/Starter";
 import Card from "../components/landing/Card";
 import Card1 from "../components/landing/Card1";
@@ -100,6 +101,7 @@ function Home(props) {
         ) : (
           <button onClick={handleDisconnect}>Connect Wallet</button>
       )}
+      <Footer1/>
       <Footer/>
     </div>
   );

@@ -69,10 +69,10 @@ function About(props) {
 
         <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">
           <div className="box-border border-solid border-gradient-1 border-2 rounded-[20px] px-10 pt-12">
-            <div className="flex flex-col justify-center items-center py-9">
+            <div className="flex flex-col justify-center items-center py-10">
               <div className="all-cap -mt-10">MeTag Premium</div>
               <Image src={premium} alt="image" />
-              <div className="px-4 -mb-16 mt-12 h-px w-full">
+              <div className="px-4 mb-7 mt-12 h-px w-full">
                 <Image src={Line} layout="responsive" alt="image" />
               </div>
               <button

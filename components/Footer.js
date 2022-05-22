@@ -16,7 +16,7 @@ export default function Footer() {
                 <h1 className="inter-font pb-6">MeTag</h1>
               </a>
             </Link>
-            <div className="footer-link pb-1">
+            <div className="footer-link pb-10">
               Changing the future of Sharing
             </div>
 
@@ -37,17 +37,10 @@ export default function Footer() {
             </div>
           </div>
           <div className="footer-link flex flex-col justify-around items-start">
-            <a href="#">Donate Us</a>
-            {/* <Link href="/about"> */}
             <a href="/about">About Us</a>
-            {/* </Link> */}
-            {/* <Link href="/press"> */} <a href="/press">Press Kit</a>
-            {/* </Link> */}
           </div>
           <div className="footer-link flex flex-col justify-around items-start">
             <a href="#">FAQs</a>
-            <a href="#">Support Forum</a>
-            <a href="#">Latest Updates</a>
           </div>
           <div className="footer-link flex flex-col justify-around items-start">
             {/* <Link href="/team"> */}
