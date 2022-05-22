@@ -273,7 +273,7 @@ function About(props) {
                     <Image src={chain} width={30} height={30} />
                   </span>
                 </div>
-                <div className="all-cap">Social Accounts<Image src={chain} width={35} height={35}/></div>
+                
                 <div className="mt-4">
                   <label className="form-text" htmlFor="firstName">
                     Twitter
@@ -419,7 +419,7 @@ function About(props) {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
