@@ -104,7 +104,7 @@ function About(props) {
             <div className="flex flex-row">
               <div className="all-cap">
                 Hey
-                <Image src={wave} width={35} height={35} />
+                <Image src={wave} width={35} height={35} alt="imageicon" />
               </div>
             </div>
             <div className="all-cap">This Account Is Linked With</div>
@@ -117,7 +117,7 @@ function About(props) {
                 <div className="all-cap flex flex-row justify-center items-center space-x-1">
                   Crypto Accounts&nbsp;
                   <span>
-                    <Image src={bag} width={30} height={30} />
+                    <Image src={bag} width={30} height={30} alt="imageicon" />
                   </span>
                 </div>
                 <div className="mt-4">
@@ -216,7 +216,7 @@ function About(props) {
                 </div>
                 <div className="all-cap">
                   Pay - Later&nbsp;
-                  <Image src={alarm} width={30} height={30} />
+                  <Image src={alarm} width={30} height={30} alt="imageicon" />
                 </div>
                 <div className="mt-4 mb-11">
                   <label className="form-text" htmlFor="firstName"></label>
@@ -274,7 +274,7 @@ function About(props) {
                 <div className="all-cap flex flex-row justify-center items-center space-x-1">
                   Social Accounts&nbsp;
                   <span>
-                    <Image src={chain} width={30} height={30} />
+                    <Image src={chain} width={30} height={30} alt="imageicon" />
                   </span>
                 </div>
 
@@ -368,7 +368,12 @@ function About(props) {
                 <div className="all-cap flex flex-row justify-center items-center space-x-1">
                   ENS&nbsp;
                   <span>
-                    <Image src={victory} width={30} height={30} />
+                    <Image
+                      src={victory}
+                      width={30}
+                      height={30}
+                      alt="imageicon"
+                    />
                   </span>
                 </div>
                 <div className="mt-4 mb-32">
@@ -410,7 +415,7 @@ function About(props) {
                 </div>
                 <div className="all-cap mb-11">
                   Get Your MeTag At
-                  <Image src={shop} width={30} height={30} />
+                  <Image src={shop} width={30} height={30} alt="imageicon" />
                 </div>
                 <button
                   type="button"
