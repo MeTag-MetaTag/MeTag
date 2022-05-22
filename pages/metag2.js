@@ -225,15 +225,6 @@ function About(props) {
     }
   }
 
-
-  // return (
-  // const handleInstagram = () => {
-
-
-  // }
-
-
-
   return (
     <div className=" bg-[#040D21]">
       <Gradient />
@@ -527,7 +518,7 @@ function About(props) {
                     <button
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                      onClick={handleInstagram}
+                      // onClick={handleInstagram}
                     >
                       <LinkIcon />
                       &nbsp;Connect

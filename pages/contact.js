@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 export default function Contact(props){
     return (
       <div className=" bg-[#040D21]">
-        <ContactForm />
+        {/* <ContactForm /> */}
         {/* <Footer1/> */}
         <Footer />
       </div>
