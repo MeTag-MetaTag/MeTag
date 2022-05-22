@@ -31,44 +31,39 @@ import {
   SettingsIcon,
   ChevronDownIcon,
 } from "@chakra-ui/icons";
+import axios from "axios";
 
 
 function About(props) {
 
-  const [binanceAccount, setBinanceAccount] = useState('');
-  const [coinbaseAccount, setCoinBaseAccount] = useState('');
-  const [metaMaskAccount, setMetaMaskAccount] = useState('');
-
+  const [metamaskAccount, setMetamaskAccount] = useState("");
+  const [binanceAccount, setBinanceAccount] = useState("");
+  const [coinbaseAccount, setCoinbaseAccount] = useState("");
+  const [apiResponse, setApiResponse] = useState({});
+  const [twitter, setTwitter] = useState("");
+  const [discord, setDiscord] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [library, setLibrary] = useState("");
 
   useEffect(() => {
     document.querySelector("body").classList.add("about");
-  });
-
-
-  async function pullUpState(account, library) {
-    const wallet = library.connection.url;
-    console.log('wallet', wallet);
-    console.log('account', account)
-    console.log('library', library);
-    setLibrary(library);
-    if (wallet == 'metamask') {
-      setMetaMaskAccount(account);
+    const fetchData = async () => {
+      const response = await axios.get('https://api-meta-tag-2.herokuapp.com/api/member/get/1');
+      setMetamaskAccount(response.data.unique_id.metamask)
+      setBinanceAccount(response.data.unique_id.binance)
+      setCoinbaseAccount(response.data.unique_id.coinbase)
+      setTwitter(response.data.unique_id.socials.twitter)
+      setDiscord(response.data.unique_id.socials.discord)
+      setInstagram(response.data.unique_id.socials.instagram)
     }
-    if (wallet == 'eip-1193:') {
-      setBinanceAccount(account);
-      console.log(library.connection.url);
-      console.log('binanceAccount', binanceAccount);
-    }
-    else {
-      setCoinBaseAccount(account);
-    }
-  }
+    fetchData();
+  }, [metamaskAccount]);
 
   const pay = async (event) => {
     let accountToUse;
     console.log('event.target.name', event.target.name);
     if (event.target.name == 'metamask') {
-      accountToUse = metaMaskAccount;
+      accountToUse = metamaskAccount;
     }
     else if (event.target.name == 'binance') {
       accountToUse = binanceAccount;
@@ -76,6 +71,7 @@ function About(props) {
     else if (event.target.name == 'coinbase') {
       accountToUse = coinbaseAccount;
     }
+    console.log('library', library);
     const signer = await library.getSigner();
     console.log('accountToUse', accountToUse);
     signer.sendTransaction({
@@ -83,6 +79,15 @@ function About(props) {
       value: ethers.utils.parseEther(".00001")
     });
 }
+
+  async function pullUpState(account, library) {
+    const wallet = library.connection.url;
+    console.log('wallet', wallet);
+    console.log('account', account)
+    console.log('library', library);
+    setLibrary(library);
+  }
+
 
   return (
     <>
@@ -119,7 +124,7 @@ function About(props) {
                       type="text"
                       placeholder="0x78..."
                       className="input-form-2 mr-6"
-                      value={metaMaskAccount}
+                      value={metamaskAccount}
                     />
                     <button
                       type="button"
@@ -280,6 +285,7 @@ function About(props) {
                       type="text"
                       className="input-form-2 mr-6"
                       required
+                      value={twitter}
                     />
                     <button
                       type="button"
@@ -308,6 +314,7 @@ function About(props) {
                       type="text"
                       className="input-form-2 mr-6"
                       required
+                      value={discord}
                     />
                     <button
                       type="button"
@@ -336,6 +343,7 @@ function About(props) {
                       type="text"
                       className="input-form-2 mr-6"
                       required
+                      value={instagram}
                     />
                     <button
                       type="button"

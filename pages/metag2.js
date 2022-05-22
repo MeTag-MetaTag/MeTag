@@ -46,6 +46,7 @@ function About(props) {
   const [twitter, setTwitter] = useState("");
   const [discord, setDiscord] = useState("");
   const [instagram, setInstagram] = useState("");
+  const [library, setLibrary] = useState("");
 
   const [ens, setEns] = useState("");
   const [supertoken, setSupertoken] = useState("");
@@ -173,27 +174,17 @@ function About(props) {
   });
 
   async function handleClick() {
-
     try {
       let result = await axios.get('https://api-meta-tag-2.herokuapp.com/api/member/get/1');
-      console.log('result', result);
+      console.log('result', result.data);
     }
     catch (error) {
       console.error(error);
     }
   }
   
-  const handleSocials = async (event) => {
-
-
-    console.log('twitter', twitter);
-    console.log('instagram', instagram);
-    console.log('discord', discord);
-
-
-  }
   const handleSave = async (event) => {
-    let apiObj = {
+    const apiObj = {
         "username" : "userame",
         "email" : "email",
         "metamask_id" : metamaskAccount,
@@ -203,15 +194,41 @@ function About(props) {
         "instagram" : instagram,
         "discord" : discord
     }
+   const response = await axios.post(
+     'https://api-meta-tag-2.herokuapp.com/api/member/create ', {
+      "username" : "userame",
+      "email" : "email",
+      "metamask_id" : metamaskAccount,
+      "coinbase_id" : coinbaseAccount,
+      "binance_id" : binanceAccount,
+      "twitter" : twitter,
+      "instagram" : instagram,
+      "discord" : discord
+    }
+  );
+    console.log('apiObj', apiObj);
+    console.log('response', response);
   }
-  
 
+  async function pullUpState(account, library) {
+    const wallet = library.connection.url;
+    setLibrary(library);
+    if (wallet == 'metamask') {
+      setMetamaskAccount(account);
+    }
+    if (wallet == 'eip-1193:') {
+      setBinanceAccount(account);
+    }
 
+    else if (library.provider == 'walletlink') {
+      setCoinbaseAccount(account);
+    }
+  }
 
   return (
     <>
       <Gradient />
-      <Navbar />
+      <Navbar pullUpState={pullUpState} />
       <button onClick={handleClick}>Get request click</button>
       <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">
         <div className="box-border border-solid border-gradient-1 border-2 rounded-[20px] px-10 pt-12">
@@ -435,8 +452,6 @@ function About(props) {
                     <button
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                      name="twitter"
-                      onClick={handleSocials}
                     >
                       <LinkIcon />
                       &nbsp;Connect
@@ -470,8 +485,6 @@ function About(props) {
                     <button
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                      name="discord"
-                      onClick={handleSocials}
                     >
                       <LinkIcon />
                       &nbsp;Connect
@@ -505,8 +518,6 @@ function About(props) {
                     <button
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                      name="instagram"
-                      onClick={handleSocials}
                     >
                       <LinkIcon />
                       &nbsp;Connect
