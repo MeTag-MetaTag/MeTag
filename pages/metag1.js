@@ -32,16 +32,11 @@ import {
   ChevronDownIcon,
 } from "@chakra-ui/icons";
 import axios from "axios";
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from "react-router-dom";
-
+import { useRouter } from 'next/router';
 
 function About(props) {
 
+  const router = useRouter();
   const [metamaskAccount, setMetamaskAccount] = useState("");
   const [binanceAccount, setBinanceAccount] = useState("");
   const [coinbaseAccount, setCoinbaseAccount] = useState("");
@@ -94,15 +89,16 @@ function About(props) {
     setLibrary(library);
   }
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    // router.push(`www.instagram.com/${instagram}`)
+    window.location.assign(`www.instagram.com/${instagram}`)
+  }
+
 
   return (
     <div className=' bg-[#040D21]'>
-      <Router>
-        <button>
-          Click ME yoooo
-          <Link to='/'></Link>
-        </button>
-      </Router>
+      <button onClick={handleClick}>CLICKKKKKKK</button>
       <Gradient />
       <Navbar pullUpState={pullUpState} />
       <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">

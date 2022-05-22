@@ -225,19 +225,11 @@ function About(props) {
     }
   }
 
-  const handleInstagram = () => {
-
-
-  }
-
-
-
   return (
 
     <div className=" bg-[#040D21]">
       <Gradient />
       <Navbar pullUpState={pullUpState} />
-      <button onClick={handleClick}>Get request click</button>
       <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">
         <div className="box-border border-solid border-gradient-1 border-2 rounded-[20px] px-10 pt-12">
           <div className="flex flex-col">
@@ -526,7 +518,6 @@ function About(props) {
                     <button
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                      onClick={handleInstagram}
                     >
                       <LinkIcon />
                       &nbsp;Connect
