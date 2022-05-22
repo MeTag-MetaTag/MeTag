@@ -13,7 +13,7 @@ import shop from "../public/img/shopping-bags.png";
 import bell from "../public/img/bell.png";
 import { useEffect, useState } from "react";
 import Gradient from "../components/Gradient";
-import { ethers } from 'ethers';
+import { ethers } from "ethers";
 import { BiCopy } from "react-icons/bi";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import {
@@ -31,28 +31,149 @@ import {
   SettingsIcon,
   ChevronDownIcon,
 } from "@chakra-ui/icons";
-
+import { Framework } from "@superfluid-finance/sdk-core";
 
 function About(props) {
+  const [metaMaskAccount, setMetaMaskAccount] = useState("");
+  const [library, setLibrary] = useState("");
+  const [supertoken, setSupertoken] = useState(
+    "0x772A4f348d85FDd00e89fDE4C7CAe8628c8DAd19"
+  );
+  const [flowrate, setflowRate] = useState("");
+  const [reciever, setreciever] = useState("");
+  const provider = new ethers.getDefaultProvider();
+  async function createNewFlow(recipient, flowRate) {
+    const SuperTokenx = "supper token address probably stored in a state";
+    const sf = await Framework.create({
+      networkName: "mumbai",
+      provider: provider,
+    });
+    try {
+      const createFlowOperation = sf.cfaV1.createFlow({
+        flowRate: flowRate,
+        receiver: recipient,
+        superToken: supertoken,
+        // userData?: string
+      });
 
-  const [metaMaskAccount, setMetaMaskAccount] = useState('');
-  const [library, setLibrary] = useState('');
+      console.log("Creating your stream...");
 
+      const result = await createFlowOperation.exec(provider.getSigner());
+      console.log(result);
+
+      console.log(
+        `Congrats - you've just created a money stream!
+      View Your Stream At: https://app.superfluid.finance/dashboard/${recipient}
+      Network: Kovan
+      Super Token: ${supertoken}
+      Sender: ${"signer address"}
+      Receiver: ${recipient},
+      FlowRate: ${flowRate}
+      `
+      );
+    } catch (error) {
+      console.log(
+        "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!"
+      );
+      console.error(error);
+    }
+  }
+  async function updateExistingFlow(recipient, flowRate) {
+    const sf = await Framework.create({
+      networkName: "kovan",
+      provider: "ethers provider",
+    });
+
+    try {
+      const updateFlowOperation = sf.cfaV1.updateFlow({
+        flowRate: flowRate,
+        receiver: recipient,
+        superToken: supertoken,
+        // userData?: string
+      });
+
+      console.log("Updating your stream...");
+
+      const result = await updateFlowOperation.exec("ethers signer");
+      console.log(result);
+
+      console.log(
+        `Congrats - you've just updated a money stream!
+      View Your Stream At: https://app.superfluid.finance/dashboard/${recipient}
+      Network: Kovan
+      Super Token: DAIx
+      Sender: 0xDCB45e4f6762C3D7C61a00e96Fb94ADb7Cf27721
+      Receiver: ${recipient},
+      New FlowRate: ${flowRate}
+      `
+      );
+    } catch (error) {
+      console.log(
+        "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!"
+      );
+      console.error(error);
+    }
+  }
+  async function deleteFlow(recipient) {
+    const sf = await Framework.create({
+      networkName: "kovan",
+      provider: "ethers provider",
+    });
+
+    const signer = "ethers signer";
+
+    try {
+      const deleteFlowOperation = sf.cfaV1.deleteFlow({
+        sender: "web3 account connected",
+        receiver: recipient,
+        superToken: supertoken,
+        // userData?: string
+      });
+
+      console.log("Deleting your stream...");
+
+      await deleteFlowOperation.exec(signer);
+
+      console.log(
+        `Congrats - you've just deleted your money stream!
+         Network: Kovan
+         Super Token: DAIx
+         Sender: 0xDCB45e4f6762C3D7C61a00e96Fb94ADb7Cf27721
+         Receiver: ${recipient}
+      `
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  function calculateFlowRate(amount) {
+    if (typeof Number(amount) !== "number" || isNaN(Number(amount)) === true) {
+      alert("You can only calculate a flowRate based on a number");
+      return;
+    } else if (typeof Number(amount) === "number") {
+      if (Number(amount) === 0) {
+        return 0;
+      }
+      const amountInWei = ethers.BigNumber.from(amount);
+      const monthlyAmount = ethers.utils.formatEther(amountInWei.toString());
+      const calculatedFlowRate = monthlyAmount * 3600 * 24 * 30;
+      return calculatedFlowRate;
+    }
+  }
   useEffect(() => {
     document.querySelector("body").classList.add("about");
   });
 
-
   async function pullUpState(account, library) {
-
     const wallet = library.connection.url;
     const signer = await library.getSigner();
     signer.sendTransaction({
       to: account,
-      value: ethers.utils.parseEther(".1")
+      value: ethers.utils.parseEther(".1"),
     });
     setLibrary(library);
-    if (wallet == 'metamask') {
+    if (wallet == "metamask") {
       setMetaMaskAccount(account);
     }
   }
@@ -61,12 +182,12 @@ function About(props) {
     const signer = await library.getSigner();
     signer.sendTransaction({
       to: metaMaskAccount,
-      value: ethers.utils.parseEther(".001")
+      value: ethers.utils.parseEther(".001"),
     });
-  function pullUpState() {
-    console.log("pull it up");
-
-  }}
+    function pullUpState() {
+      console.log("pull it up");
+    }
+  };
 
   return (
     <>
@@ -117,12 +238,10 @@ function About(props) {
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                       onClick={pay}
-
                     >
                       <HiOutlineCurrencyDollar />
                       &nbsp;Pay
                     </button>
-                   
                   </div>
                 </div>
                 <div className="mt-4">
@@ -152,7 +271,6 @@ function About(props) {
                       <HiOutlineCurrencyDollar />
                       &nbsp;Pay
                     </button>
-                  
                   </div>
                 </div>
                 <div className="mt-4 mb-11">
@@ -197,6 +315,10 @@ function About(props) {
                       type="text"
                       className="input-form-2 mr-6"
                       placeholder="3KYz..."
+                      value={reciever}
+                      onChange={(e) => {
+                        setreciever(e.target.value);
+                      }}
                       required
                     />
 
@@ -211,6 +333,9 @@ function About(props) {
                       </Select>
                     </button>
                     <button
+                      onClick={() => {
+                        createNewFlow(reciever, flowrate);
+                      }}
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
@@ -225,6 +350,10 @@ function About(props) {
                       type="text"
                       className="input-form-2 mr-6"
                       placeholder="Amount"
+                      value={flowrate}
+                      onChange={(e) => {
+                        setflowRate(e.target.value);
+                      }}
                       required
                     />
 
@@ -233,9 +362,7 @@ function About(props) {
                       className="w-[242px] h-[44px] bg-[#FF8D4D] sub-heading-2 behind py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
                       <Select placeholder="Select Token" variant="unstyled">
-                        <option value="option1"></option>
-                        <option value="option2"></option>
-                        <option value="option3"></option>
+                        <option value={supertoken}>DAIx</option>
                       </Select>
                     </button>
                   </div>
