@@ -55,7 +55,27 @@ const User = () => {
         // setProvider();
     }
 
-    const  CHANNEL_PK = process.env.PRIVATEKEY
+    // the private key of the address which you used to create a channel
+    const  CHANNEL_PK = process.env.PRIVATEKEY;
+
+    // Initialise the SDK
+    const  epnsSdk = new EpnsSDK(CHANNEL_PK);
+
+    const allSubscribers = await epnsSdk.getSubscribers()
+
+    const tx = await sdk.sendNotification(
+      recipientAddress,
+      pushNotificationtitle,
+      pushNotificationMessage,
+      notificationTitle,
+      notificationMessage,
+      3, //this is the notificationType
+      cta, // a url for users to be redirected to
+      image ,// an image url, or an empty string
+      null, //this can be left as null
+    );
+
+    console.log(tx)
 
 
   return (
