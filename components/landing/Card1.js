@@ -27,7 +27,6 @@ export default function Card1() {
           whileHover={{ y: -5 }}
           whileTap={{ y: 0 }}
           variants={videoAnimation}
-            
           transition={{ type: "tween", duration: 0.5 }}
         >
           <Image src={hologram} alt="image" />
@@ -35,31 +34,30 @@ export default function Card1() {
       </div>
       <motion.div
         variants={reasonsAnimation}
-          
         transition={{ type: "tween", duration: 0.5 }}
         className="laptop:w-1/2"
       >
-        <h2 className="mb-6 laptop:mb-8">
-          turn the <span className="text-yellow-300">career</span> of your{" "}
-          <span className="text-orange-300">dreams</span> into reality
+        <h2 className="mb-6 laptop:mb-8 font-inter font-bold laptop:text-[28px] text-[20px] capitalize">
+          turn <span className="text-yellow-300">Sharing</span> into a&nbsp;
+          <span className="text-orange-300">Fun game</span>
         </h2>
         <InfoBox2
           icon={exploration}
-          title="Exploration:"
+          title="Searching:"
           emoji={earth}
-          desc="Get a clear idea of where you are headed in your career with us. Look at this as your opportunity to open yourself up to possibilities."
+          desc="Having all the public keys in a single place will help MeTag users save time searching for different keys alongside."
         />
         <InfoBox2
           icon={research}
-          title="Research:"
+          title="Control:"
           emoji={books}
-          desc="Once you start to get a sense of what you want, begin to research the state of your current reality and approach to achieving your ideal next career move all with just !"
+          desc="MeTag serves you with total control of your data and privacy, you can change the visibility of your address anytime you want and can edit them anytime you need."
         />
         <InfoBox2
           icon={action}
           title="Action:"
           emoji={aim}
-          desc="Now is the time to take action with, with diverse opportunities in store for you. "
+          desc="Now is the time to take action with CodeAsia, with diverse opportunities in store for you. "
         />
       </motion.div>
     </div>

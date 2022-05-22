@@ -21,7 +21,6 @@ export default function Card2() {
           whileHover={{ y: -5 }}
           whileTap={{ y: 0 }}
           variants={videoAnimation}
-            
           transition={{ type: "tween", duration: 0.5 }}
         >
           <Image src={monitor} alt="image" />
@@ -29,12 +28,11 @@ export default function Card2() {
       </div>
       <motion.div
         variants={reasonsAnimation}
-          
         transition={{ type: "tween", duration: 0.5 }}
         className="w-full
                         laptop:order-1 laptop:w-5/12"
       >
-        <h2 className="flex flex-row mb-5">
+        <h2 className="flex flex-row mb-5 font-inter font-bold laptop:text-[28px] text-[20px] capitalize">
           everything&nbsp; <span className="text-purple-200">creative</span>
           <p className="h-8 w-8">
             {" "}

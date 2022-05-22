@@ -19,7 +19,6 @@ export default function Card3() {
           whileHover={{ y: -5 }}
           whileTap={{ y: 0 }}
           variants={videoAnimation}
-            
           transition={{ type: "tween", duration: 0.5 }}
         >
           <Image src={notes} alt="image" />
@@ -27,14 +26,13 @@ export default function Card3() {
       </div>
       <motion.div
         variants={reasonsAnimation}
-          
         transition={{ type: "tween", duration: 0.5 }}
         className="laptop:w-1/3"
       >
         <h2>
           make <span className="text-blue-300">partners</span> & boost
         </h2>
-        <h2 className="flex flex-row mb-5">
+        <h2 className="flex flex-row mb-5 font-inter font-bold laptop:text-[28px] text-[20px] capitalize">
           your work efficiency
           <p className="w-8 h-8 mt-2">
             <Image src={handshake} alt="image" />

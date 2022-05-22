@@ -20,16 +20,15 @@ export default function Card() {
           whileHover={{ y: -5 }}
           initial="hidden"
           animate="show"
-            
           variants={cardAnimation}
           transition={{ delay: 0.1, stiffness: 300 }}
         >
           <Image src={diverse} alt="image" />
 
-          <p className="large-bold-text mb-3">Diverse Community</p>
+          <p className="large-bold-text mb-3">Connecting</p>
           <p className="small-text">
-            You&apos;re not alone. Learn and get help from our friendly
-            community of beginner and experienced developers.
+            Connecting with enthusiasts at meet-ups & events is now just a scan
+            away.
           </p>
         </motion.div>
       </div>
@@ -38,17 +37,14 @@ export default function Card() {
           whileHover={{ y: -5 }}
           initial="hidden"
           animate="show"
-            
           variants={cardAnimation}
           transition={{ delay: 0.1, stiffness: 300 }}
         >
           <Image src={collaborative} alt="image" />
-          <p className="large-bold-text text-[20px] mb-3">
-            Collaborative Knowledge
-          </p>
+          <p className="large-bold-text text-[20px] mb-3">Paying</p>
           <p className="small-text">
-            Exclusive exposure to industry experts & an opportunity to learn
-            from them.
+            We make crypto payments hassle-free; no need to copy and paste
+            public keys; just scan and pay!
           </p>
         </motion.div>
       </div>
@@ -57,15 +53,14 @@ export default function Card() {
           whileHover={{ y: -5 }}
           initial="hidden"
           animate="show"
-            
           variants={cardAnimation}
           transition={{ delay: 0.1, stiffness: 300 }}
         >
           <Image src={feedback} alt="image" />
-          <p className="large-bold-text mb-3">Instant Feedback</p>
+          <p className="large-bold-text mb-3">Update</p>
           <p className="small-text">
-            Your code is tested as soon as you submit it, so you always know if
-            you&apos;re on the right track.
+            We make crypto payments hassle-free; no need to copy and paste
+            public keys; just scan and pay!
           </p>
         </motion.div>
       </div>
@@ -74,14 +69,13 @@ export default function Card() {
           whileHover={{ y: -5 }}
           initial="hidden"
           animate="show"
-            
           variants={cardAnimation}
           transition={{ delay: 0.1, stiffness: 300 }}
         >
           <Image src={events} alt="image" />
-          <p className="large-bold-text mb-3">Skill-Building Events</p>
+          <p className="large-bold-text mb-3">Streaming Money</p>
           <p className="small-text">
-            Participate in high-quality, engaging events and learn skills.
+            Send money over time with the integration with Superfluid & MeTag.
           </p>
         </motion.div>
       </div>

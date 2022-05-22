@@ -51,8 +51,10 @@ function About(props) {
           </div>
         </motion.div>
         <div className="flex flex-col items-center">
-          <h1 className="-mb-4">Learn, collaborate, share</h1>
-          <h1 className="flex flex-row">
+          <h1 className="-mb-4 font-inter font-bold text-gradient-1 block laptop:text-[34px] text-[20px] capitalize">
+            Learn, collaborate, share
+          </h1>
+          <h1 className=" flex-row font-inter font-bold text-gradient-1 block laptop:text-[34px] text-[20px] capitalize">
             knowledge and skills&nbsp;
             <p className="w-10 h-10 mt-1">
               <Image src={hundred} alt="image" />
@@ -69,20 +71,28 @@ function About(props) {
       <div className="flex flex-row box-border border-solid border-gradient-1 border-2 rounded-[20px] items-center mt-[75px] max-w-5xl mx-auto">
         <div className="flex flex-row space-x-40 justify-center px-[75px] py-7">
           <div className="flex flex-col">
-            <h4>25+</h4>
+            <h4 className="font-inter font-bold laptop:text-[24px] text-[14px] capitalize">
+              25+
+            </h4>
             <p className="small-text">team members</p>
           </div>
           <div className="flex flex-col">
-            <h4>200+</h4>
+            <h4 className="font-inter font-bold laptop:text-[24px] text-[14px] capitalize">
+              200+
+            </h4>
             <p className="small-text">community members</p>
           </div>
 
           <div className="flex flex-col">
-            <h4>200+</h4>
+            <h4 className="font-inter font-bold laptop:text-[24px] text-[14px] capitalize">
+              200+
+            </h4>
             <p className="small-text">social media followers</p>
           </div>
           <div className="flex flex-col">
-            <h4>2021</h4>
+            <h4 className="font-inter font-bold laptop:text-[24px] text-[14px] capitalize">
+              2021
+            </h4>
             <p className="small-text">year founded</p>
           </div>
         </div>
@@ -107,7 +117,10 @@ function About(props) {
             chooses the individuals, rather
             <br /> than them trying to choose it.”
           </h4>
-          <h1 style={{ textAlign: "right" }}>
+          <h1
+            className="font-inter font-bold text-gradient-1 block laptop:text-[34px] text-[20px] capitalize"
+            style={{ textAlign: "right" }}
+          >
             <span className="gradient-text-static">Jeff Bezos</span>
           </h1>
           <div className="small-text italic mb-24">
@@ -119,7 +132,7 @@ function About(props) {
         <Image src={wave} alt="image" />
       </div>
       <div className="flex flex-col items-center">
-        <h2 className="flex flex-row">
+        <h2 className="flex flex-row font-inter font-bold laptop:text-[28px] text-[20px] capitalize">
           Our Mission And Vision&nbsp;
           <p className="h-10 w-10">
             <Image src={rocket} alt="image" />

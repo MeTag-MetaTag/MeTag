@@ -16,7 +16,7 @@ export default function Contact(props){
           </div>
           <div className="laptop:oder-2">
             <div className="text-center mb-6 mt-8">
-              <h1 className="m-auto text-left">
+              <h1 className="m-auto text-left font-inter font-bold text-gradient-1 block laptop:text-[34px] text-[20px] capitalize">
                 Our Team is Here to Help! <span className="text-black">💬</span>
               </h1>
               <p className="sub-heading-2 m-auto font-normal laptop:text-left text-center">
@@ -96,7 +96,9 @@ export default function Contact(props){
                 </label>
                 <textarea id="message" name="message" className="input-form" />
               </div>
-              <button className="primary m-auto mt-6">Submit</button>
+              <button className="primary px-[30px] border-gradient-1  text-[14px] h-[45px] laptop:text-[16px] laptop:h-[45px] bg-transparent m-auto mt-6">
+                Submit
+              </button>
             </form>
           </div>
           <div className="hidden laptop:block ml-16 text-center">

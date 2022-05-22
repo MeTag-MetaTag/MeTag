@@ -18,4 +18,5 @@ export const newTheme = extendTheme({
   colors: {
     primary: "#040D21",
   },
+  
 });

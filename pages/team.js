@@ -5,7 +5,7 @@ import Image from "next/image";
 import bulb from "../public/img/team/bulb.svg";
 import member from "../public/img/team/member.svg";
 import ecllipse from "../public/img/team/ecllipse.svg";
-import Member from "../components/team/Member"
+import Member from "../components/team/Member";
 import { useEffect } from "react";
 // import JoinUs from "../components/joinUs/joinUs.js";
 // import { motion } from "framer-motion";
@@ -20,13 +20,22 @@ function About(props) {
       <Navbar />
 
       <div className="flex flex-col items-center text-center mt-28">
-        <h5>We&apos;re Building</h5>
-        <span className="font-inter font-bold laptop:text-[44px] text-[24px]"><h1 className="inline">asia&apos;s Largest <br/>Pipeline of Future <br/>Engineers & Entrepreneurs</h1> 🚀</span>
+        <h5 className="font-cabin font-bold laptop:text-[20px] text-[18px] capitalize">
+          We&apos;re Building
+        </h5>
+        <span className="font-inter font-bold laptop:text-[44px] text-[24px]">
+          <h1 className="inline font-inter font-bold text-gradient-1 laptop:text-[34px] text-[20px] capitalize">
+            asia&apos;s Largest <br />
+            Pipeline of Future <br />
+            Engineers & Entrepreneurs
+          </h1>{" "}
+          🚀
+        </span>
         <div className="flex flex-row items-center justify-center mt-9">
           <Image src={bulb} />
         </div>
         <div className="">
-          <h2>
+          <h2 className=" font-inter font-bold laptop:text-[28px] text-[20px] capitalize">
             Friendly folks, <span className="text-yellow-300">standing</span>{" "}
             by💛
           </h2>
@@ -50,17 +59,19 @@ function About(props) {
         <span className="small-bold-text mb-16">Founder & CEO</span>
       </div>
       <div className="grid grid-cols-4 grid-rows-2 max-w-7xl mx-auto">
-        <Member pfp={member} name="Vansh Gehlot"/>
-        <Member pfp={member} name="Vansh Gehlot"/>
-        <Member pfp={member} name="Vansh Gehlot"/>
-        <Member pfp={member} name="Vansh Gehlot"/>
-        <Member pfp={member} name="Vansh Gehlot"/>
-        <Member pfp={member} name="Vansh Gehlot"/>
-        <Member pfp={member} name="Vansh Gehlot"/>
-        <Member pfp={member} name="Vansh Gehlot"/>
+        <Member pfp={member} name="Vansh Gehlot" />
+        <Member pfp={member} name="Vansh Gehlot" />
+        <Member pfp={member} name="Vansh Gehlot" />
+        <Member pfp={member} name="Vansh Gehlot" />
+        <Member pfp={member} name="Vansh Gehlot" />
+        <Member pfp={member} name="Vansh Gehlot" />
+        <Member pfp={member} name="Vansh Gehlot" />
+        <Member pfp={member} name="Vansh Gehlot" />
       </div>
       <div className="flex flex-col items-center mt-44 mb-24 ">
-        <h1>how we are doing it <span className="text-black">🌟</span></h1>
+        <h1>
+          how we are doing it <span className="text-black">🌟</span>
+        </h1>
         <p className="sub-heading-2">
           Fresh and new released episodes to help you get
         </p>
