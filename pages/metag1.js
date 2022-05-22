@@ -38,10 +38,7 @@ function About(props) {
   const [binanceAccount, setBinanceAccount] = useState('');
   const [coinbaseAccount, setCoinBaseAccount] = useState('');
   const [metaMaskAccount, setMetaMaskAccount] = useState('');
-  const [library, setLibrary] = useState('');
-  const [twitter, setTwitter] = useState('');
-  const [discord, setDiscord] = useState('');
-  const [ig, setIg] = useState('');
+
 
   useEffect(() => {
     document.querySelector("body").classList.add("about");
@@ -51,6 +48,8 @@ function About(props) {
   async function pullUpState(account, library) {
     const wallet = library.connection.url;
     console.log('wallet', wallet);
+    console.log('account', account)
+    console.log('library', library);
     setLibrary(library);
     if (wallet == 'metamask') {
       setMetaMaskAccount(account);
@@ -60,15 +59,14 @@ function About(props) {
       console.log(library.connection.url);
       console.log('binanceAccount', binanceAccount);
     }
-    if (wallet.includes('coinbase')) {
-      console.log('working***');
+    else {
       setCoinBaseAccount(account);
     }
   }
 
   const pay = async (event) => {
     let accountToUse;
-    console.log('event.tareget.name', event.target.name);
+    console.log('event.target.name', event.target.name);
     if (event.target.name == 'metamask') {
       accountToUse = metaMaskAccount;
     }
@@ -76,7 +74,7 @@ function About(props) {
       accountToUse = binanceAccount;
     }
     else if (event.target.name == 'coinbase') {
-
+      accountToUse = coinbaseAccount;
     }
     const signer = await library.getSigner();
     console.log('accountToUse', accountToUse);
@@ -84,15 +82,7 @@ function About(props) {
       to: accountToUse,
       value: ethers.utils.parseEther(".00001")
     });
-  function pullUpState() {
-    console.log("pull it up");
-
-  }}
-
-  const handleSocialMedia = (event) => {
-    console.log('event.target.name', event.target.name);
-    console.log('hey is this working?');
-  }
+}
 
   return (
     <>
@@ -143,11 +133,7 @@ function About(props) {
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                       onClick={pay}
-<<<<<<< HEAD
                       name="metamask"
-=======
-
->>>>>>> 4334f567faae81f224b3e3ff971b7f3299fd25cb
                     >
                       <HiOutlineCurrencyDollar />
                       &nbsp;Pay
@@ -178,13 +164,9 @@ function About(props) {
                     </button>
                     <button
                       type="button"
-<<<<<<< HEAD
                       name="coinbase"
                       onClick={pay}
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
-=======
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
->>>>>>> 4334f567faae81f224b3e3ff971b7f3299fd25cb
                     >
                       <HiOutlineCurrencyDollar />
                       &nbsp;Pay
@@ -215,13 +197,9 @@ function About(props) {
                     </button>
                     <button
                       type="button"
-<<<<<<< HEAD
-                      className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                       onClick={pay}
                       name="binance"
-=======
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
->>>>>>> 4334f567faae81f224b3e3ff971b7f3299fd25cb
                     >
                       <HiOutlineCurrencyDollar />
                       &nbsp;Pay
@@ -300,9 +278,6 @@ function About(props) {
                       id="firstName"
                       name="twitter"
                       type="text"
-                      placeholder="enter your twitter username"
-                      value={twitter}
-                      onChange={e => setTwitter(e.target.value)}
                       className="input-form-2 mr-6"
                       required
                     />
@@ -315,7 +290,6 @@ function About(props) {
                     </button>
                     <button
                       type="button"
-                      onClick={handleSocialMedia}
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
                       <LinkIcon />
@@ -334,9 +308,6 @@ function About(props) {
                       type="text"
                       className="input-form-2 mr-6"
                       required
-                      placeholder="enter your discord username"
-                      value={discord}
-                      onChange={e => setDiscord(e.target.value)}
                     />
                     <button
                       type="button"
@@ -363,9 +334,6 @@ function About(props) {
                       id="firstName"
                       name="ig"
                       type="text"
-                      placeholder="enter your instagram username"
-                      value={ig}
-                      onChange={e => setIg(e.target.value)}
                       className="input-form-2 mr-6"
                       required
                     />
