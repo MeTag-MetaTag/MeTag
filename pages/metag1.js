@@ -85,7 +85,7 @@ function About(props) {
 }
 
   return (
-    <>
+    <div className=' bg-[#040D21]'>
       <Gradient />
       <Navbar pullUpState={pullUpState} />
       <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">

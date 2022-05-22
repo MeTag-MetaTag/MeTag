@@ -3,14 +3,11 @@ import Line from "../public/Vector 37.svg";
 import twitter from "../public/icons/twitter.svg";
 import instagram from "../public/icons/instagram.svg";
 import linkedin from "../public/icons/linkedin.svg";
-import rectangle from "../public/img/Rectangle.svg";
-import codeasia from "../public/img/CodeAsia.org.svg";
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="relative bg-[url('../public/img/CodeAsia.org.svg')]  bg-center bg-[length:1280px_360px] bg-[#00000066] backdrop-blur-3xl h-[458px] rounded-t-[32px] w-screen">
-      {/* <div className="bg-[url('../public/img/CodeAsia.org.svg')] bg-cover py-[49px] px-[80px]"> */}
+    <div className="relative  bg-center bg-[length:1280px_360px] bg-[#00000066] backdrop-blur-3xl h-[458px] rounded-t-[32px] w-screen">
       <footer className=" flex flex-wrap items-center font-cabin py-12 px-20">
         <div className="flex flex-row basis-full justify-between">
           <div className="flex flex-col justify-center pr-12 items-start">
@@ -31,7 +28,7 @@ export default function Footer() {
                 <Image src={instagram} alt="Image assets" />
               </a>
               <a
-                href="https://www.linkedin.com/company/codeasia/"
+                href="https://www.linkedin.com/company//"
                 rel="external noopener noreferrer"
                 target="_blank"
               >
