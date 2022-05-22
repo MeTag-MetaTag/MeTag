@@ -31,45 +31,78 @@ import {
   SettingsIcon,
   ChevronDownIcon,
 } from "@chakra-ui/icons";
+import axios from "axios";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 function About(props) {
 
-  const [metaMaskAccount, setMetaMaskAccount] = useState('');
-  const [library, setLibrary] = useState('');
+  const [metamaskAccount, setMetamaskAccount] = useState("");
+  const [binanceAccount, setBinanceAccount] = useState("");
+  const [coinbaseAccount, setCoinbaseAccount] = useState("");
+  const [apiResponse, setApiResponse] = useState({});
+  const [twitter, setTwitter] = useState("");
+  const [discord, setDiscord] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [library, setLibrary] = useState("");
 
   useEffect(() => {
     document.querySelector("body").classList.add("about");
-  });
+    const fetchData = async () => {
+      const response = await axios.get('https://api-meta-tag-2.herokuapp.com/api/member/get/1');
+      setMetamaskAccount(response.data.unique_id.metamask)
+      setBinanceAccount(response.data.unique_id.binance)
+      setCoinbaseAccount(response.data.unique_id.coinbase)
+      setTwitter(response.data.unique_id.socials.twitter)
+      setDiscord(response.data.unique_id.socials.discord)
+      setInstagram(response.data.unique_id.socials.instagram)
+    }
+    fetchData();
+  }, [metamaskAccount]);
 
+  const pay = async (event) => {
+    let accountToUse;
+    console.log('event.target.name', event.target.name);
+    if (event.target.name == 'metamask') {
+      accountToUse = metamaskAccount;
+    }
+    else if (event.target.name == 'binance') {
+      accountToUse = binanceAccount;
+    }
+    else if (event.target.name == 'coinbase') {
+      accountToUse = coinbaseAccount;
+    }
+    console.log('library', library);
+    const signer = await library.getSigner();
+    console.log('accountToUse', accountToUse);
+    signer.sendTransaction({
+      to: accountToUse,
+      value: ethers.utils.parseEther(".00001")
+    });
+}
 
   async function pullUpState(account, library) {
-
     const wallet = library.connection.url;
-    const signer = await library.getSigner();
-    signer.sendTransaction({
-      to: account,
-      value: ethers.utils.parseEther(".1")
-    });
+    console.log('wallet', wallet);
+    console.log('account', account)
+    console.log('library', library);
     setLibrary(library);
-    if (wallet == 'metamask') {
-      setMetaMaskAccount(account);
-    }
   }
 
-  const pay = async () => {
-    const signer = await library.getSigner();
-    signer.sendTransaction({
-      to: metaMaskAccount,
-      value: ethers.utils.parseEther(".001")
-    });
-  function pullUpState() {
-    console.log("pull it up");
-
-  }}
 
   return (
-    <>
+    <div className=' bg-[#040D21]'>
+      <Router>
+        <button>
+          Click ME yoooo
+          <Link to='/'></Link>
+        </button>
+      </Router>
       <Gradient />
       <Navbar pullUpState={pullUpState} />
       <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">
@@ -103,7 +136,7 @@ function About(props) {
                       type="text"
                       placeholder="0x78..."
                       className="input-form-2 mr-6"
-                      value={metaMaskAccount}
+                      value={metamaskAccount}
                     />
                     <button
                       type="button"
@@ -117,7 +150,7 @@ function About(props) {
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                       onClick={pay}
-
+                      name="metamask"
                     >
                       <HiOutlineCurrencyDollar />
                       &nbsp;Pay
@@ -137,6 +170,7 @@ function About(props) {
                       placeholder="K3Yz..."
                       className="input-form-2 mr-6"
                       required
+                      value={coinbaseAccount}
                     />
                     <button
                       type="button"
@@ -147,6 +181,8 @@ function About(props) {
                     </button>
                     <button
                       type="button"
+                      name="coinbase"
+                      onClick={pay}
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
                       <HiOutlineCurrencyDollar />
@@ -167,6 +203,7 @@ function About(props) {
                       placeholder="0x4d..."
                       className="input-form-2 mr-6"
                       required
+                      value={binanceAccount}
                     />
                     <button
                       type="button"
@@ -177,6 +214,8 @@ function About(props) {
                     </button>
                     <button
                       type="button"
+                      onClick={pay}
+                      name="binance"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
                     >
                       <HiOutlineCurrencyDollar />
@@ -240,12 +279,7 @@ function About(props) {
                     </button>
                   </div>
                 </div>
-                <div className="all-cap flex flex-row justify-center items-center space-x-1">
-                  Social Accounts&nbsp;
-                  <span>
-                    <Image src={chain} width={30} height={30} />
-                  </span>
-                </div>
+                <div className="all-cap">Social Accounts<Image src={chain} width={35} height={35}/></div>
                 <div className="mt-4">
                   <label className="form-text" htmlFor="firstName">
                     Twitter
@@ -253,10 +287,11 @@ function About(props) {
                   <div className="flex flex-row justify-center items-center">
                     <input
                       id="firstName"
-                      name="firstName"
+                      name="twitter"
                       type="text"
                       className="input-form-2 mr-6"
                       required
+                      value={twitter}
                     />
                     <button
                       type="button"
@@ -281,10 +316,11 @@ function About(props) {
                   <div className="flex flex-row justify-center items-center">
                     <input
                       id="firstName"
-                      name="firstName"
+                      name="discord"
                       type="text"
                       className="input-form-2 mr-6"
                       required
+                      value={discord}
                     />
                     <button
                       type="button"
@@ -309,10 +345,11 @@ function About(props) {
                   <div className="flex flex-row justify-center items-center">
                     <input
                       id="firstName"
-                      name="firstName"
+                      name="ig"
                       type="text"
                       className="input-form-2 mr-6"
                       required
+                      value={instagram}
                     />
                     <button
                       type="button"
@@ -389,7 +426,7 @@ function About(props) {
         </div>
       </div>
       {/* <Footer /> */}
-    </>
+    </div>
   );
 }
 

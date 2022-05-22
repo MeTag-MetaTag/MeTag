@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Image from "next/image";
@@ -45,6 +46,7 @@ function About(props) {
   const [twitter, setTwitter] = useState("");
   const [discord, setDiscord] = useState("");
   const [instagram, setInstagram] = useState("");
+  const [library, setLibrary] = useState("");
 
   const [ens, setEns] = useState("");
   const [supertoken, setSupertoken] = useState("");
@@ -171,10 +173,71 @@ function About(props) {
     document.querySelector("body").classList.add("about");
   });
 
+  async function handleClick() {
+    try {
+      let result = await axios.get('https://api-meta-tag-2.herokuapp.com/api/member/get/1');
+      console.log('result', result.data);
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+  
+  const handleSave = async (event) => {
+    const apiObj = {
+        "username" : "userame",
+        "email" : "email",
+        "metamask_id" : metamaskAccount,
+        "coinbase_id" : coinbaseAccount,
+        "binance_id" : binanceAccount,
+        "twitter" : twitter,
+        "instagram" : instagram,
+        "discord" : discord
+    }
+   const response = await axios.post(
+     'https://api-meta-tag-2.herokuapp.com/api/member/create ', {
+      "username" : "userame",
+      "email" : "email",
+      "metamask_id" : metamaskAccount,
+      "coinbase_id" : coinbaseAccount,
+      "binance_id" : binanceAccount,
+      "twitter" : twitter,
+      "instagram" : instagram,
+      "discord" : discord
+    }
+  );
+    console.log('apiObj', apiObj);
+    console.log('response', response);
+  }
+
+  async function pullUpState(account, library) {
+    const wallet = library.connection.url;
+    setLibrary(library);
+    if (wallet == 'metamask') {
+      setMetamaskAccount(account);
+    }
+    if (wallet == 'eip-1193:') {
+      setBinanceAccount(account);
+    }
+
+    else if (library.provider == 'walletlink') {
+      setCoinbaseAccount(account);
+    }
+  }
+
+  const handleInstagram = () => {
+
+
+  }
+
+
+
   return (
-    <>
+
+    <div className=" bg-[#040D21]">
       <Gradient />
-      <Navbar />
+      <Navbar pullUpState={pullUpState} />
+      <button onClick={handleClick}>Get request click</button>
       <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">
         <div className="box-border border-solid border-gradient-1 border-2 rounded-[20px] px-10 pt-12">
           <div className="flex flex-col">
@@ -381,6 +444,7 @@ function About(props) {
                       name="firstName"
                       type="text"
                       className="input-form-2 mr-6"
+                      placeholder="enter your twitter username"
                       value={twitter}
                       onChange={(e) => setTwitter(e.target.value)}
                     />
@@ -413,6 +477,7 @@ function About(props) {
                       name="firstName"
                       type="text"
                       className="input-form-2 mr-6"
+                      placeholder="enter your discord username"
                       value={discord}
                       onChange={(e) => setDiscord(e.target.value)}
                     />
@@ -445,6 +510,7 @@ function About(props) {
                       name="firstName"
                       type="text"
                       className="input-form-2 mr-6"
+                      placeholder="enter your instagram username"
                       value={instagram}
                       onChange={(e) => setInstagram(e.target.value)}
                     />
@@ -460,6 +526,7 @@ function About(props) {
                     <button
                       type="button"
                       className="w-[124px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
+                      onClick={handleInstagram}
                     >
                       <LinkIcon />
                       &nbsp;Connect
@@ -509,6 +576,7 @@ function About(props) {
                   <button
                     type="button"
                     className="w-[124px] h-[44px] bg-[#77D672] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px] mb-20"
+                    onClick={handleSave}
                   >
                     Save&nbsp; <CheckIcon />
                   </button>
@@ -540,8 +608,9 @@ function About(props) {
         </div>
       </div>
       {/* <Footer /> */}
-    </>
+    </div>
   );
 }
 
 export default About;
+
