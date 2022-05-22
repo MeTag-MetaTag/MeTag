@@ -226,7 +226,7 @@ function About(props) {
   }
 
   return (
-    <>
+    <div className=" bg-[#040D21]">
       <Gradient />
       <Navbar pullUpState={pullUpState} />
       <button onClick={handleClick}>Get request click</button>
@@ -599,7 +599,7 @@ function About(props) {
         </div>
       </div>
       {/* <Footer /> */}
-    </>
+    </div>
   );
 }
 

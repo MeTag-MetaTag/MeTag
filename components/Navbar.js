@@ -102,7 +102,7 @@ function Navbar(props) {
         </Link>
       </div>
       <div className="items-end flex flex-row space-x-3">
-        <button className="tetiary-1" onClick={connectWallet}>Connect Wallet</button>
+        <button className="tetiary-1 text-white" onClick={connectWallet}>Connect Wallet</button>
       </div>
     </header>
   );
