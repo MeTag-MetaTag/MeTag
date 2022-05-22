@@ -420,7 +420,7 @@ function About(props) {
         </div>
       </div>
       {/* <Footer /> */}
-    </>
+    </div>
   );
 }
 
