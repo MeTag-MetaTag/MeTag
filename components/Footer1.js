@@ -27,7 +27,7 @@ export default function Footer1(props) {
             <h3 className="mb-2 font-cabin font-bold laptop:text-[30px] text-[20px] capitalize">
               Join the Waitlist{" "}
               <span>
-                <Image src={shop} width={30} height={30} />
+                <Image src={shop} width={30} height={30} alt="imageicon" />
               </span>
             </h3>
             <p className="sub-heading-2">
@@ -59,17 +59,14 @@ export default function Footer1(props) {
                   src={PointArrow}
                   className="rotate-[90deg] scale-x-[-1]
                                                                 laptop:scale-y-[-1] laptop:rotate-[180deg]"
+                  alt="imageicon"
                 />
               </div>
             </div>
           </div>
           <form>
             <div className="flex flex-col laptop:items-end">
-              <Image
-                src={basic}
-                width={250}
-                height={300}
-              />
+              <Image src={basic} width={250} height={300} alt="imageicon" />
             </div>
           </form>
         </div>

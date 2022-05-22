@@ -32,7 +32,7 @@ function About(props) {
           🚀
         </span>
         <div className="flex flex-row items-center justify-center mt-9">
-          <Image src={bulb} />
+          <Image alt="imageicon" src={bulb} />
         </div>
         <div className="">
           <h2 className=" font-inter font-bold laptop:text-[28px] text-[20px] capitalize">
@@ -53,7 +53,7 @@ function About(props) {
         </p>
       </div>
       <div className="flex flex-col items-center">
-        <Image src={member} />
+        <Image alt="imageicon" src={member} />
 
         <span className="large-bold-text">Vansh Gehlot</span>
         <span className="small-bold-text mb-16">Founder & CEO</span>
@@ -82,7 +82,7 @@ function About(props) {
         <div className="flex flex-col items-center">
           <div className="flex flex-row box-border border-solid border-gradient-1 border-2 rounded-[20px]">
             <div className="flex flex-col items-start my-12 mx-8">
-              <Image src={ecllipse} />
+              <Image alt="imageicon" src={ecllipse} />
               <div className="large-bold-text mt-2 mb-2">James Allen</div>
               <div className="small-bold-text text-[#1ACCF3] mb-2">
                 UI/UX designer
@@ -104,7 +104,7 @@ function About(props) {
         <div className="flex flex-col items-center">
           <div className="flex flex-row box-border border-solid border-gradient-1 border-2 rounded-[20px]">
             <div className="flex flex-col items-start my-12 mx-8">
-              <Image src={ecllipse} />
+              <Image alt="imageicon" src={ecllipse} />
               <div className="large-bold-text mt-2 mb-2">James Allen</div>
               <div className="small-bold-text text-[#1ACCF3] mb-2">
                 UI/UX designer
@@ -126,7 +126,7 @@ function About(props) {
         <div className="flex flex-col items-center">
           <div className="flex flex-row box-border border-solid border-gradient-1 border-2 rounded-[20px]">
             <div className="flex flex-col items-start my-12 mx-8">
-              <Image src={ecllipse} />
+              <Image alt="imageicon" src={ecllipse} />
               <div className="large-bold-text mt-2 mb-2">James Allen</div>
               <div className="small-bold-text text-[#1ACCF3] mb-2">
                 UI/UX designer
@@ -148,7 +148,7 @@ function About(props) {
         <div className="flex flex-col items-center">
           <div className="flex flex-row box-border border-solid border-gradient-1 border-2 rounded-[20px]">
             <div className="flex flex-col items-start my-12 mx-8">
-              <Image src={ecllipse} />
+              <Image alt="imageicon" src={ecllipse} />
               <div className="large-bold-text mt-2 mb-2">James Allen</div>
               <div className="small-bold-text text-[#1ACCF3] mb-2">
                 UI/UX designer
@@ -170,7 +170,7 @@ function About(props) {
         <div className="flex flex-col items-center">
           <div className="flex flex-row box-border border-solid border-gradient-1 border-2 rounded-[20px]">
             <div className="flex flex-col items-start my-12 mx-8">
-              <Image src={ecllipse} />
+              <Image alt="imageicon" src={ecllipse} />
               <div className="large-bold-text mt-2 mb-2">James Allen</div>
               <div className="small-bold-text text-[#1ACCF3] mb-2">
                 UI/UX designer
@@ -192,7 +192,7 @@ function About(props) {
         <div className="flex flex-col items-center">
           <div className="flex flex-row box-border border-solid border-gradient-1 border-2 rounded-[20px]">
             <div className="flex flex-col items-start my-12 mx-8">
-              <Image src={ecllipse} />
+              <Image alt="imageicon" src={ecllipse} />
               <div className="large-bold-text mt-2 mb-2">James Allen</div>
               <div className="small-bold-text text-[#1ACCF3] mb-2">
                 UI/UX designer

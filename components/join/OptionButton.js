@@ -5,9 +5,22 @@ import React, {useState} from 'react';
 export default function OptionButton(props){
     const [isSelected, setSelect] = useState(props.selected);
     if(isSelected){
-        return <button onClick={setSelect(!isSelected)} className="tetiary-1"><Image src={props.icon}/>{props.content}</button>
+        return (
+          <button onClick={setSelect(!isSelected)} className="tetiary-1">
+            <Image src={props.icon} alt="imageicon" />
+            {props.content}
+          </button>
+        );
     }
     else{
-        return <button onClick={setSelect(!isSelected)} className="tetiary-1 text-black/40"><Image src={props.icon}/>{props.content}</button>
+        return (
+          <button
+            onClick={setSelect(!isSelected)}
+            className="tetiary-1 text-black/40"
+          >
+            <Image src={props.icon} alt="imageicon" />
+            {props.content}
+          </button>
+        );
     }
 }

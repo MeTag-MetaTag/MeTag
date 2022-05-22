@@ -37,7 +37,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="footer-link flex flex-col justify-around items-start">
-            <a href="/about">About Us</a>
+            <Link href="/about">About Us</Link>
           </div>
           <div className="footer-link flex flex-col justify-around items-start">
             <a href="#">FAQs</a>
