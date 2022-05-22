@@ -17,33 +17,59 @@ import { ethers } from 'ethers';
 
 function About(props) {
 
+  const [binanceAccount, setBinanceAccount] = useState('');
+  const [coinbaseAccount, setCoinBaseAccount] = useState('');
   const [metaMaskAccount, setMetaMaskAccount] = useState('');
   const [library, setLibrary] = useState('');
+  const [twitter, setTwitter] = useState('');
+  const [discord, setDiscord] = useState('');
+  const [ig, setIg] = useState('');
 
   useEffect(() => {
     document.querySelector("body").classList.add("about");
   });
 
   async function pullUpState(account, library) {
-
     const wallet = library.connection.url;
-    const signer = await library.getSigner();
-    signer.sendTransaction({
-      to: account,
-      value: ethers.utils.parseEther(".1")
-    });
+    console.log('wallet', wallet);
     setLibrary(library);
     if (wallet == 'metamask') {
       setMetaMaskAccount(account);
     }
+    if (wallet == 'eip-1193:') {
+      setBinanceAccount(account);
+      console.log(library.connection.url);
+      console.log('binanceAccount', binanceAccount);
+    }
+    if (wallet.includes('coinbase')) {
+      console.log('working***');
+      setCoinBaseAccount(account);
+    }
   }
 
-  const pay = async () => {
+  const pay = async (event) => {
+    let accountToUse;
+    console.log('event.tareget.name', event.target.name);
+    if (event.target.name == 'metamask') {
+      accountToUse = metaMaskAccount;
+    }
+    else if (event.target.name == 'binance') {
+      accountToUse = binanceAccount;
+    }
+    else if (event.target.name == 'coinbase') {
+
+    }
     const signer = await library.getSigner();
+    console.log('accountToUse', accountToUse);
     signer.sendTransaction({
-      to: metaMaskAccount,
-      value: ethers.utils.parseEther(".001")
+      to: accountToUse,
+      value: ethers.utils.parseEther(".00001")
     });
+  }
+
+  const handleSocialMedia = (event) => {
+    console.log('event.target.name', event.target.name);
+    console.log('hey is this working?');
   }
 
   return (
@@ -69,7 +95,6 @@ function About(props) {
                   </label>
                   <div className="flex flex-row">
                     <input
-                   
                       type="text"
                       placeholder="0x78..."
                       className="input-form-2"
@@ -85,6 +110,7 @@ function About(props) {
                       type="button"
                       className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                       onClick={pay}
+                      name="metamask"
                     >
                       Pay
                     </button>
@@ -102,6 +128,7 @@ function About(props) {
                       placeholder="K3Yz..."
                       className="input-form-2"
                       required
+                      value={coinbaseAccount}
                     />
                     <button
                       type="button"
@@ -111,6 +138,8 @@ function About(props) {
                     </button>
                     <button
                       type="button"
+                      name="coinbase"
+                      onClick={pay}
                       className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
                     >
                       Pay
@@ -119,7 +148,7 @@ function About(props) {
                 </div>
                 <div className="mt-4 mb-11">
                   <label className="form-text" htmlFor="firstName">
-                    WalletConnect
+                    Binance
                   </label>
                   <div className="flex flex-row">
                     <input
@@ -129,6 +158,7 @@ function About(props) {
                       placeholder="0x4d..."
                       className="input-form-2"
                       required
+                      value={binanceAccount}
                     />
                     <button
                       type="button"
@@ -139,6 +169,8 @@ function About(props) {
                     <button
                       type="button"
                       className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      onClick={pay}
+                      name="binance"
                     >
                       Pay
                     </button>
@@ -170,16 +202,19 @@ function About(props) {
                   </div>
                 </div>
                 <div className="all-cap">Social Accounts<Image src={chain} width={35} height={35}/></div>
-                <div className="mt-4">0
+                <div className="mt-4">
                   <label className="form-text" htmlFor="firstName">
                     Twitter
                   </label>
                   <div className="flex flex-row">
                     <input
                       id="firstName"
-                      name="firstName"
+                      name="twitter"
                       type="text"
                       className="input-form-2"
+                      placeholder="enter your twitter username"
+                      value={twitter}
+                      onChange={e => setTwitter(e.target.value)}
                       required
                     />
                     <button
@@ -191,6 +226,7 @@ function About(props) {
                     <button
                       type="button"
                       className="w-[71.17px] h-[38.96px] bg-[#FF8D4D] sub-heading-2 py-1 px-4 rounded-[6px]  mr-[18px]"
+                      onClick={handleSocialMedia}
                     >
                       Connect
                     </button>
@@ -203,10 +239,13 @@ function About(props) {
                   <div className="flex flex-row">
                     <input
                       id="firstName"
-                      name="firstName"
+                      name="discord"
                       type="text"
                       className="input-form-2"
                       required
+                      placeholder="enter your discord username"
+                      value={discord}
+                      onChange={e => setDiscord(e.target.value)}
                     />
                     <button
                       type="button"
@@ -229,10 +268,13 @@ function About(props) {
                   <div className="flex flex-row">
                     <input
                       id="firstName"
-                      name="firstName"
+                      name="ig"
                       type="text"
                       className="input-form-2"
-                      required
+                      placeholder="enter your instagram username"
+                      requiredx
+                      value={ig}
+                      onChange={e => setIg(e.target.value)}
                     />
                     <button
                       type="button"

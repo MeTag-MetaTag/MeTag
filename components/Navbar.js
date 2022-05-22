@@ -65,10 +65,13 @@ function Navbar(props) {
       const network = await library.getNetwork();
       setProvider(provider);
       setLibrary(library);
+      
+      console.log('provider', provider);
+      console.log('library', library);
+      console.log('account', accounts[0]);;
       if (accounts) setAccount(accounts[0]);
       setNetwork(network);
       setChainId(network.chainId);
-      console.log('args', accounts[0], library.connection.url);
       props.pullUpState(accounts[0], library);
     } catch (error) {
       console.error(error);
