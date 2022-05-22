@@ -226,7 +226,6 @@ function About(props) {
   }
 
   return (
-
     <div className=" bg-[#040D21]">
       <Gradient />
       <Navbar pullUpState={pullUpState} />
@@ -235,12 +234,14 @@ function About(props) {
           <div className="flex flex-col">
             <div className="flex flex-row">
               <div className="all-cap">
-                Hey $USERNAME$ <Image src={wave} width={30} height={30} />
+                Hey $USERNAME${" "}
+                <Image src={wave} width={30} height={30} alt="imageicon" />
               </div>
             </div>
             <div className=" flex flex-row">
               <div className="all-cap">
-                Welcome To MeTag <Image src={rocket} width={30} height={30} />
+                Welcome To MeTag{" "}
+                <Image src={rocket} width={30} height={30} alt="imageicon" />
               </div>
             </div>
 
@@ -252,7 +253,7 @@ function About(props) {
                 <div className="all-cap flex flex-row justify-center items-center space-x-1">
                   Crypto Accounts&nbsp;
                   <span>
-                    <Image src={bag} width={30} height={30} />
+                    <Image src={bag} width={30} height={30} alt="imageicon" />
                   </span>
                   <FcPlus />
                 </div>
@@ -355,7 +356,7 @@ function About(props) {
                 </div>
                 <div className="all-cap">
                   Pay - Later&nbsp;
-                  <Image src={alarm} width={30} height={30} />
+                  <Image src={alarm} width={30} height={30} alt="imageicon" />
                 </div>
                 <div className="mt-4 mb-11">
                   <label className="form-text" htmlFor="firstName"></label>
@@ -422,7 +423,7 @@ function About(props) {
                 <div className="all-cap flex flex-row justify-center items-center space-x-1">
                   Social Accounts&nbsp;
                   <span>
-                    <Image src={chain} width={30} height={30} />
+                    <Image src={chain} width={30} height={30} alt="imageicon" />
                   </span>
                   <FcPlus />
                 </div>
@@ -528,7 +529,12 @@ function About(props) {
                 <div className="all-cap flex flex-row justify-center items-center space-x-1">
                   ENS&nbsp;
                   <span>
-                    <Image src={victory} width={30} height={30} />
+                    <Image
+                      src={victory}
+                      width={30}
+                      height={30}
+                      alt="imageicon"
+                    />
                   </span>
                   <FcPlus />
                 </div>
@@ -559,7 +565,7 @@ function About(props) {
                 <div className="all-cap flex flex-row justify-center items-center space-x-1 mb-14">
                   Notifications&nbsp;
                   <span>
-                    <Image src={bell} width={30} height={30} />
+                    <Image src={bell} width={30} height={30} alt="imageicon" />
                   </span>
                   <Switch colorScheme="green" id="email-alerts" />
                 </div>
@@ -583,7 +589,7 @@ function About(props) {
                 </div>
                 <div className="all-cap mb-11">
                   Get Your MeTag At
-                  <Image src={shop} width={30} height={30} />
+                  <Image src={shop} width={30} height={30} alt="imageicon" />
                 </div>
                 <Link href="/marketplace">
                   <button
@@ -598,7 +604,8 @@ function About(props) {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+
+      <Footer />
     </div>
   );
 }

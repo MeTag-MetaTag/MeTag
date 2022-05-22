@@ -7,6 +7,16 @@ import styles from '../styles/Home.module.css';
 import { useWeb3React } from "@web3-react/core";
 import { connectors } from "../utils/connectors";
 import Navbar from '../components/Navbar';
+// import Footer1 from "../components/Footer1";
+import Gradient from "../components/landing/Gradient";
+import Footer from "../components/Footer";
+import Footer1 from "../components/Footer1";
+import Starter from "../components/landing/Starter";
+import Card from "../components/landing/Card";
+import Card1 from "../components/landing/Card1";
+import Card2 from "../components/landing/Card2";
+import Card3 from "../components/landing/Card3.js";
+import { newTheme } from "../styles/theme";
 
 
 function Home(props) {
@@ -58,34 +68,42 @@ function Home(props) {
   }
   
   return (
-      <div>
+    <div className=' bg-[#040D21]'>
         <Navbar />
-          <Form className={styles.login}>
-            <Form.Field>
-              <label className={styles.signUp}>Sign up</label>
-              <label className={styles.bodyText}>Can you enter your email address and we will send magic link to complete registation</label>
-              <input
-                placeholder='Email Address:'
-                value={email} 
-                onChange={e => setEmail(e.target.value)}
-                className={styles.input}
-              />
-            </Form.Field>
-            { isLoggedIn ? 
+        <Gradient />
+        <Starter />
+        <Card />
+        <Card1 />
+        {/* <Form className={styles.login}>
+          <Form.Field>
+            <label className={styles.signUp}>Sign up</label>
+            <label className={styles.bodyText}>
+              Can you enter your email address and we will send magic link to
+              complete registation
+            </label>
+            <input
+              placeholder="Email Address:"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={styles.input}
+            />
+          </Form.Field>
+          {isLoggedIn ? (
             <button onClick={handleClick}>Logout</button>
-            :
-            <button className={styles.btn} onClick={handleClick}>Continue</button>
-            }
-        </Form>
-        {
-            !isConnected ? (
-                <button onClick={handleConnect}>Connect Wallet</button>
-            ) : (
-                <button onClick={handleDisconnect}>Connect Wallet</button>
-            )
-            
-        }
-      </div>
+          ) : (
+            <button className={styles.btn} onClick={handleClick}>
+              Continue
+            </button>
+          )}
+        </Form> */}
+        {!isConnected ? (
+          <button onClick={handleConnect}>Connect Wallet</button>
+        ) : (
+          <button onClick={handleDisconnect}>Connect Wallet</button>
+      )}
+      <Footer1/>
+      <Footer/>
+    </div>
   );
 }
 

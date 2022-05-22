@@ -13,7 +13,7 @@ import shop from "../public/img/shopping-bags.png";
 import bell from "../public/img/bell.png";
 import { useEffect, useState } from "react";
 import Gradient from "../components/Gradient";
-import { ethers } from 'ethers';
+import { ethers } from "ethers";
 import { BiCopy } from "react-icons/bi";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import {
@@ -32,11 +32,10 @@ import {
   ChevronDownIcon,
 } from "@chakra-ui/icons";
 import axios from "axios";
-import { useRouter } from 'next/router';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function About(props) {
-
-  const router = useRouter();
   const [metamaskAccount, setMetamaskAccount] = useState("");
   const [binanceAccount, setBinanceAccount] = useState("");
   const [coinbaseAccount, setCoinbaseAccount] = useState("");
@@ -49,56 +48,54 @@ function About(props) {
   useEffect(() => {
     document.querySelector("body").classList.add("about");
     const fetchData = async () => {
-      const response = await axios.get('https://api-meta-tag-2.herokuapp.com/api/member/get/1');
-      setMetamaskAccount(response.data.unique_id.metamask)
-      setBinanceAccount(response.data.unique_id.binance)
-      setCoinbaseAccount(response.data.unique_id.coinbase)
-      setTwitter(response.data.unique_id.socials.twitter)
-      setDiscord(response.data.unique_id.socials.discord)
-      setInstagram(response.data.unique_id.socials.instagram)
-    }
+      const response = await axios.get(
+        "https://api-meta-tag-2.herokuapp.com/api/member/get/1"
+      );
+      setMetamaskAccount(response.data.unique_id.metamask);
+      setBinanceAccount(response.data.unique_id.binance);
+      setCoinbaseAccount(response.data.unique_id.coinbase);
+      setTwitter(response.data.unique_id.socials.twitter);
+      setDiscord(response.data.unique_id.socials.discord);
+      setInstagram(response.data.unique_id.socials.instagram);
+    };
     fetchData();
   }, [metamaskAccount]);
 
   const pay = async (event) => {
     let accountToUse;
-    console.log('event.target.name', event.target.name);
-    if (event.target.name == 'metamask') {
+    console.log("event.target.name", event.target.name);
+    if (event.target.name == "metamask") {
       accountToUse = metamaskAccount;
-    }
-    else if (event.target.name == 'binance') {
+    } else if (event.target.name == "binance") {
       accountToUse = binanceAccount;
-    }
-    else if (event.target.name == 'coinbase') {
+    } else if (event.target.name == "coinbase") {
       accountToUse = coinbaseAccount;
     }
-    console.log('library', library);
+    console.log("library", library);
     const signer = await library.getSigner();
-    console.log('accountToUse', accountToUse);
+    console.log("accountToUse", accountToUse);
     signer.sendTransaction({
       to: accountToUse,
-      value: ethers.utils.parseEther(".00001")
+      value: ethers.utils.parseEther(".00001"),
     });
-}
+  };
 
   async function pullUpState(account, library) {
     const wallet = library.connection.url;
-    console.log('wallet', wallet);
-    console.log('account', account)
-    console.log('library', library);
+    console.log("wallet", wallet);
+    console.log("account", account);
+    console.log("library", library);
     setLibrary(library);
   }
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    // router.push(`www.instagram.com/${instagram}`)
-    window.location.assign(`www.instagram.com/${instagram}`)
-  }
-
-
   return (
-    <div className=' bg-[#040D21]'>
-      <button onClick={handleClick}>CLICKKKKKKK</button>
+    <div className=" bg-[#040D21]">
+      <Router>
+        <button>
+          Click ME yoooo
+          <Link to="/"></Link>
+        </button>
+      </Router>
       <Gradient />
       <Navbar pullUpState={pullUpState} />
       <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">
@@ -107,7 +104,7 @@ function About(props) {
             <div className="flex flex-row">
               <div className="all-cap">
                 Hey
-                <Image src={wave} width={35} height={35} />
+                <Image src={wave} width={35} height={35} alt="imageicon" />
               </div>
             </div>
             <div className="all-cap">This Account Is Linked With</div>
@@ -120,7 +117,7 @@ function About(props) {
                 <div className="all-cap flex flex-row justify-center items-center space-x-1">
                   Crypto Accounts&nbsp;
                   <span>
-                    <Image src={bag} width={30} height={30} />
+                    <Image src={bag} width={30} height={30} alt="imageicon" />
                   </span>
                 </div>
                 <div className="mt-4">
@@ -151,7 +148,6 @@ function About(props) {
                       <HiOutlineCurrencyDollar />
                       &nbsp;Pay
                     </button>
-                   
                   </div>
                 </div>
                 <div className="mt-4">
@@ -184,7 +180,6 @@ function About(props) {
                       <HiOutlineCurrencyDollar />
                       &nbsp;Pay
                     </button>
-                  
                   </div>
                 </div>
                 <div className="mt-4 mb-11">
@@ -221,7 +216,7 @@ function About(props) {
                 </div>
                 <div className="all-cap">
                   Pay - Later&nbsp;
-                  <Image src={alarm} width={30} height={30} />
+                  <Image src={alarm} width={30} height={30} alt="imageicon" />
                 </div>
                 <div className="mt-4 mb-11">
                   <label className="form-text" htmlFor="firstName"></label>
@@ -275,7 +270,14 @@ function About(props) {
                     </button>
                   </div>
                 </div>
-                <div className="all-cap">Social Accounts<Image src={chain} width={35} height={35}/></div>
+
+                <div className="all-cap flex flex-row justify-center items-center space-x-1">
+                  Social Accounts&nbsp;
+                  <span>
+                    <Image src={chain} width={30} height={30} alt="imageicon" />
+                  </span>
+                </div>
+
                 <div className="mt-4">
                   <label className="form-text" htmlFor="firstName">
                     Twitter
@@ -366,7 +368,12 @@ function About(props) {
                 <div className="all-cap flex flex-row justify-center items-center space-x-1">
                   ENS&nbsp;
                   <span>
-                    <Image src={victory} width={30} height={30} />
+                    <Image
+                      src={victory}
+                      width={30}
+                      height={30}
+                      alt="imageicon"
+                    />
                   </span>
                 </div>
                 <div className="mt-4 mb-32">
@@ -408,7 +415,7 @@ function About(props) {
                 </div>
                 <div className="all-cap mb-11">
                   Get Your MeTag At
-                  <Image src={shop} width={30} height={30} />
+                  <Image src={shop} width={30} height={30} alt="imageicon" />
                 </div>
                 <button
                   type="button"
@@ -421,7 +428,8 @@ function About(props) {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+
+      <Footer />
     </div>
   );
 }
