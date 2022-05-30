@@ -25,6 +25,7 @@ export default function Starter() {
           variants={headerAnimation}
           transition={{ delay: 0.2, type: "tween" }}
         >
+          
           <Image src={communityMsg} alt="image" />
         </motion.div>
       </div>
@@ -53,15 +54,11 @@ export default function Starter() {
             </p>
           </h4>
         </div>
-        <motion.button
-          whileHover={{ y: -2 }}
-          whileTap={{ y: 0 }}
-          className="text-white tetiary-1 border-2 border-white"
-        >
-          
+        <motion.button whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
+          <button className="text-white tetiary-1 border-2 border-white">
             Join Waitlist&nbsp;
             <Image width={20} height={20} src={party} alt="image" />
-          
+          </button>
         </motion.button>
       </div>
     </div>
