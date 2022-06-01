@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useRouter } from 'next/router'
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Image from "next/image";
@@ -40,6 +41,7 @@ import { ethers } from "ethers";
 function About(props) {
   // const [flowrate, setflowRate] = useState("");
   //const [reciever, setreciever] = useState("");
+  const router = useRouter();
   const [metamaskAccount, setMetamaskAccount] = useState("");
   const [binanceAccount, setBinanceAccount] = useState("");
   const [coinbaseAccount, setCoinbaseAccount] = useState("");
@@ -173,41 +175,20 @@ function About(props) {
     document.querySelector("body").classList.add("about");
   });
 
-  async function handleClick() {
-    try {
-      let result = await axios.get('https://api-meta-tag-2.herokuapp.com/api/member/get/1');
-      console.log('result', result.data);
-    }
-    catch (error) {
-      console.error(error);
-    }
-  }
-  
   const handleSave = async (event) => {
     const apiObj = {
-        "username" : "userame",
-        "email" : "email",
+        "username" : "John Smith",
+        "email" : "fakemail@gmail.com",
         "metamask_id" : metamaskAccount,
-        "coinbase_id" : coinbaseAccount,
-        "binance_id" : binanceAccount,
+        "coinbase_id" : 'coinbaseAccount1',
+        "binance_id" : 'binanceAccount2',
         "twitter" : twitter,
         "instagram" : instagram,
         "discord" : discord
     }
-   const response = await axios.post(
-     'https://api-meta-tag-2.herokuapp.com/api/member/create ', {
-      "username" : "userame",
-      "email" : "email",
-      "metamask_id" : metamaskAccount,
-      "coinbase_id" : coinbaseAccount,
-      "binance_id" : binanceAccount,
-      "twitter" : twitter,
-      "instagram" : instagram,
-      "discord" : discord
-    }
-  );
-    console.log('apiObj', apiObj);
-    console.log('response', response);
+   const response = await axios.post('https://api-meta-tag-2.herokuapp.com/api/member/create ', apiObj);
+   router.push('/metag1');
+   console.log('response', response);
   }
 
   async function pullUpState(account, library) {

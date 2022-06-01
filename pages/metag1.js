@@ -33,7 +33,6 @@ import {
 } from "@chakra-ui/icons";
 import axios from "axios";
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function About(props) {
   const [metamaskAccount, setMetamaskAccount] = useState("");
@@ -49,14 +48,15 @@ function About(props) {
     document.querySelector("body").classList.add("about");
     const fetchData = async () => {
       const response = await axios.get(
-        "https://api-meta-tag-2.herokuapp.com/api/member/get/1"
+        "https://api-meta-tag-2.herokuapp.com/api/member/get/all"
       );
-      setMetamaskAccount(response.data.unique_id.metamask);
-      setBinanceAccount(response.data.unique_id.binance);
-      setCoinbaseAccount(response.data.unique_id.coinbase);
-      setTwitter(response.data.unique_id.socials.twitter);
-      setDiscord(response.data.unique_id.socials.discord);
-      setInstagram(response.data.unique_id.socials.instagram);
+      console.log('response', response);
+      // setMetamaskAccount(response.data.unique_id.metamask);
+      // setBinanceAccount(response.data.unique_id.binance);
+      // setCoinbaseAccount(response.data.unique_id.coinbase);
+      // setTwitter(response.data.unique_id.socials.twitter);
+      // setDiscord(response.data.unique_id.socials.discord);
+      // setInstagram(response.data.unique_id.socials.instagram);
     };
     fetchData();
   }, [metamaskAccount]);
@@ -90,12 +90,6 @@ function About(props) {
 
   return (
     <div className=" bg-[#040D21]">
-      <Router>
-        <button>
-          Click ME yoooo
-          <Link to="/"></Link>
-        </button>
-      </Router>
       <Gradient />
       <Navbar pullUpState={pullUpState} />
       <div className="flex flex-row justify-center  mt-[69px] mb-[273px]">
