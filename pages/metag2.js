@@ -31,6 +31,7 @@ import {
   ChakraProvider,
   Icon,
   Select,
+  StylesProvider,
 } from "@chakra-ui/react";
 import { BiCopy } from "react-icons/bi";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
@@ -49,6 +50,7 @@ function About(props) {
   const [discord, setDiscord] = useState("");
   const [instagram, setInstagram] = useState("");
   const [library, setLibrary] = useState("");
+  const [provider, setProvider] = useState("");
 
   const [ens, setEns] = useState("");
   const [supertoken, setSupertoken] = useState("");
@@ -171,37 +173,41 @@ function About(props) {
       return calculatedFlowRate;
     }
   }
+
   useEffect(() => {
-    document.querySelector("body").classList.add("about");
-  });
+    document.querySelector("body").classList.add("about")
+  })
 
   const handleSave = async (event) => {
     const apiObj = {
         "username" : "John Smith",
         "email" : "fakemail@gmail.com",
         "metamask_id" : metamaskAccount,
-        "coinbase_id" : 'coinbaseAccount1',
-        "binance_id" : 'binanceAccount2',
+        "coinbase_id" : coinbaseAccount,
+        "binance_id" : binanceAccount,
         "twitter" : twitter,
         "instagram" : instagram,
         "discord" : discord
     }
+
    const response = await axios.post('https://api-meta-tag-2.herokuapp.com/api/member/create ', apiObj);
-   router.push('/metag1');
+
+  //  router.push(`/qrcode/${metamaskAccount}`);
+   router.push(`qrcode/new`);
    console.log('response', response);
   }
 
-  async function pullUpState(account, library) {
+  async function pullUpState(account, library, provider) {
     const wallet = library.connection.url;
     setLibrary(library);
+    setProvider(provider);
     if (wallet == 'metamask') {
       setMetamaskAccount(account);
     }
     if (wallet == 'eip-1193:') {
       setBinanceAccount(account);
     }
-
-    else if (library.provider == 'walletlink') {
+    else if (library.provider.isCoinbaseWallet == true) {
       setCoinbaseAccount(account);
     }
   }
@@ -592,4 +598,3 @@ function About(props) {
 }
 
 export default About;
-

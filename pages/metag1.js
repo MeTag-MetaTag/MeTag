@@ -43,6 +43,7 @@ function About(props) {
   const [discord, setDiscord] = useState("");
   const [instagram, setInstagram] = useState("");
   const [library, setLibrary] = useState("");
+  const [databaseArray, setDatabaseArray] = useState({});
 
   useEffect(() => {
     document.querySelector("body").classList.add("about");
@@ -50,7 +51,8 @@ function About(props) {
       const response = await axios.get(
         "https://api-meta-tag-2.herokuapp.com/api/member/get/all"
       );
-      console.log('response', response);
+      setDatabaseArray(response.data.members);
+
       // setMetamaskAccount(response.data.unique_id.metamask);
       // setBinanceAccount(response.data.unique_id.binance);
       // setCoinbaseAccount(response.data.unique_id.coinbase);
@@ -81,10 +83,8 @@ function About(props) {
   };
 
   async function pullUpState(account, library) {
+    // this would be for user paying QR code owner and connecting wallet
     const wallet = library.connection.url;
-    console.log("wallet", wallet);
-    console.log("account", account);
-    console.log("library", library);
     setLibrary(library);
   }
 
