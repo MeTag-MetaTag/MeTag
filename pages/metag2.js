@@ -254,7 +254,6 @@ function About(props) {
                       placeholder="0x78..."
                       className="input-form-2 mr-6"
                       value={metamaskAccount}
-                      onChange={(e) => setMetamaskAccount(e.target.value)}
                     />
                     <CopyToClipboard text={metamaskAccount}>
                       <button

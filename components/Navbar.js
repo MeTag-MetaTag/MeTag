@@ -52,6 +52,10 @@ function Navbar(props) {
     });
   }, []);
 
+  const testAccount = (accounts) => {
+    console.log('TestProvideraccounts', accounts);
+  }
+
   const connectWallet = async () => {
     const web3Modal = new Web3Modal({
       providerOptions
@@ -59,9 +63,6 @@ function Navbar(props) {
     try {
       console.log('waiting for provider');
       const provider = await web3Modal.connect();
-      provider.on("accountsChanged", (accounts) => {
-        console.log('Provideraccounts', accounts);
-      });
       const library = new ethers.providers.Web3Provider(provider);
       const accounts = await library.listAccounts();
       const network = await library.getNetwork();
@@ -70,7 +71,10 @@ function Navbar(props) {
       if (accounts) setAccount(accounts[0]);
       setNetwork(network);
       setChainId(network.chainId);
-      props.pullUpState(accounts[0], library, provider);
+
+      provider.on("accountsChanged", (accounts) => {
+        props.pullUpState(accounts[0], library, provider);
+      });
     } catch (error) {
       console.error(error);
     }
