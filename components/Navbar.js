@@ -13,6 +13,8 @@ function Navbar(props) {
   const [account, setAccount] = useState('');
   const [network, setNetwork] = useState();
   const [chainId, setChainId] = useState();
+  const [web3Modal, setWeb3Modal] = useState();
+
   const providerOptions = {
       binancechainwallet: {
         package: true
@@ -52,33 +54,42 @@ function Navbar(props) {
     });
   }, []);
 
-  const testAccount = (accounts) => {
-    console.log('TestProvideraccounts', accounts);
-  }
-
   const connectWallet = async () => {
     const web3Modal = new Web3Modal({
       providerOptions
     });
+    await web3Modal.clearCachedProvider();
+    // if (provider) {
+    //   await provider.disconnect();
+    // }
     try {
       console.log('waiting for provider');
       const provider = await web3Modal.connect();
       const library = new ethers.providers.Web3Provider(provider);
       const accounts = await library.listAccounts();
       const network = await library.getNetwork();
+      setWeb3Modal(web3Modal); 
       setProvider(provider);
       setLibrary(library);
       if (accounts) setAccount(accounts[0]);
       setNetwork(network);
       setChainId(network.chainId);
-
+      props.pullUpState(accounts[0], library, provider);
       provider.on("accountsChanged", (accounts) => {
+        console.log('accounts***', accounts);
         props.pullUpState(accounts[0], library, provider);
       });
     } catch (error) {
       console.error(error);
     }
   };
+
+  const disconnectWallet = async () => {
+    await web3Modal.clearCachedProvider();
+    await provider.disconnect();
+  }
+
+
 
   return (
     <header className="flex flex-wrap justify-center items-center sticky top-0 bg-transparent backdrop-blur-lg z-[99] transition duration-200 py-0.5 px-16">
@@ -109,6 +120,7 @@ function Navbar(props) {
       </div>
       <div className="items-end flex flex-row space-x-3">
         <button className="tetiary-1 text-white" onClick={connectWallet}>Connect Wallet</button>
+        <button className="tetiary-1 text-white" onClick={disconnectWallet}>Disconnect Wallet</button>
       </div>
     </header>
   );
