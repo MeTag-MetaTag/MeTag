@@ -33,6 +33,13 @@ function Navbar(props) {
         }
       }
   };
+  
+function installMetamask() {
+if (!(window.web3 || window.ethereum)) {
+  if ($('#installMetaMask').length < 1)
+    $('.web3modal-modal-card').prepend('<div id="installMetaMask" class="cjAFRf web3modal-provider-wrapper"><a href="https://metamask.io/" target="_blank" class="cjAFRf web3modal-provider-container"><div class="jMhaxE web3modal-provider-icon"><img src="./assets/img/metamask.svg" alt="MetaMask"></div><div class="bktcUM sc-web3modal-provider-name mt-0">Install MetaMask</div><div class="eFHlqH web3modal-provider-description">Connect using browser wallet</div></a></div>')
+}
+}
 
   const openNav = () => {
     setHideNav(!hideNav);
@@ -56,8 +63,11 @@ function Navbar(props) {
 
   const connectWallet = async () => {
     const web3Modal = new Web3Modal({
-      providerOptions
+      cacheProvider: true, // optional
+      disableInjectedProvider: false,
+      providerOptions,
     });
+    installMetamask()
     await web3Modal.clearCachedProvider();
     // if (provider) {
     //   await provider.disconnect();
