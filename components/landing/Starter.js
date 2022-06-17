@@ -54,11 +54,11 @@ export default function Starter() {
             </p>
           </h4>
         </div>
-        <motion.button whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
-          <button className="text-white tetiary-1 border-2 border-white">
+        <motion.button className="text-white tetiary-1 border-2 border-white" whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
+   
             Join Waitlist&nbsp;
             <Image width={20} height={20} src={party} alt="image" />
-          </button>
+     
         </motion.button>
       </div>
     </div>
