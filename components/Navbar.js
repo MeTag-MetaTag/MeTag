@@ -62,7 +62,7 @@ if (!(window.web3 || window.ethereum)) {
   }, []);
 
   const connectWallet = async () => {
-      console.log('hey the changes are live true ****')
+      console.log('hey the changes are live true ****');
     const web3Modal = new Web3Modal({
       cacheProvider: true, // optional
       disableInjectedProvider: false,
