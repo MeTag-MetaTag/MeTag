@@ -4,17 +4,15 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Image from "next/image";
 import Line from "../public/Vector 37.svg";
-// import design from "../public/icons/Vector.svg";
-// import alarm from "../public/img/alarm-clock.png";
+
 import bag from "../public/img/money-bag.png";
 import rocket from "../public/img/rocket.png";
-// import victory from "../public/img/victory-hand.png";
-// import chain from "../public/img/link.png";
+
 import wave from "../public/img/waving-hand.png";
 import shop from "../public/img/shopping-bags.png";
 import bell from "../public/img/bell.png";
 import Link from "next/link";
-// import { CopyToClipboard } from "react-copy-to-clipboard";
+
 import { useState, useEffect } from "react";
 import {
   SearchIcon,
@@ -33,151 +31,27 @@ import {
   Select,
   StylesProvider,
 } from "@chakra-ui/react";
-// import { BiCopy } from "react-icons/bi";
-// import { HiOutlineCurrencyDollar } from "react-icons/hi";
+
 import { FcPlus } from "react-icons/fc";
-// import { Framework } from "@superfluid-finance/sdk-core";
-// import { ethers } from "ethers";
+
+import Web3Modal from "web3modal";
+import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
+import WalletConnect from "@walletconnect/web3-provider";
+import { ethers } from 'ethers';
 
 function About(props) {
-  // const [flowrate, setflowRate] = useState("");
-  //const [reciever, setreciever] = useState("");
+
   const router = useRouter();
-  const [metamaskAccount, setMetamaskAccount] = useState("");
-  const [binanceAccount, setBinanceAccount] = useState("");
-  const [coinbaseAccount, setCoinbaseAccount] = useState("");
   const [twitter, setTwitter] = useState("");
   const [discord, setDiscord] = useState("");
   const [instagram, setInstagram] = useState("");
   const [library, setLibrary] = useState("");
   const [provider, setProvider] = useState("");
-
-  // const [ens, setEns] = useState("");
-  // const [supertoken, setSupertoken] = useState("");
-
-  // async function createNewFlow(recipient, flowRate) {
-  //   const SuperTokenx = "supper token address probably stored in a state";
-  //   const sf = await Framework.create({
-  //     networkName: "kovan",
-  //     provider: "ethersprovider",
-  //   });
-  //   try {
-  //     const createFlowOperation = sf.cfaV1.createFlow({
-  //       flowRate: flowRate,
-  //       receiver: recipient,
-  //       superToken: supertoken,
-  //       // userData?: string
-  //     });
-
-  //     console.log("Creating your stream...");
-
-  //     const result = await createFlowOperation.exec("ethers signer");
-  //     console.log(result);
-
-  //     console.log(
-  //       `Congrats - you've just created a money stream!
-  //     View Your Stream At: https://app.superfluid.finance/dashboard/${recipient}
-  //     Network: Kovan
-  //     Super Token: ${supertoken}
-  //     Sender: ${"signer address"}
-  //     Receiver: ${recipient},
-  //     FlowRate: ${flowRate}
-  //     `
-  //     );
-  //   } catch (error) {
-  //     console.log(
-  //       "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!"
-  //     );
-  //     console.error(error);
-  //   }
-  // }
-  // async function updateExistingFlow(recipient, flowRate) {
-  //   const sf = await Framework.create({
-  //     networkName: "kovan",
-  //     provider: "ethers provider",
-  //   });
-
-  //   try {
-  //     const updateFlowOperation = sf.cfaV1.updateFlow({
-  //       flowRate: flowRate,
-  //       receiver: recipient,
-  //       superToken: supertoken,
-  //       // userData?: string
-  //     });
-
-  //     console.log("Updating your stream...");
-
-  //     const result = await updateFlowOperation.exec("ethers signer");
-  //     console.log(result);
-
-  //     console.log(
-  //       `Congrats - you've just updated a money stream!
-  //     View Your Stream At: https://app.superfluid.finance/dashboard/${recipient}
-  //     Network: Kovan
-  //     Super Token: DAIx
-  //     Sender: 0xDCB45e4f6762C3D7C61a00e96Fb94ADb7Cf27721
-  //     Receiver: ${recipient},
-  //     New FlowRate: ${flowRate}
-  //     `
-  //     );
-  //   } catch (error) {
-  //     console.log(
-  //       "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!"
-  //     );
-  //     console.error(error);
-  //   }
-  // }
-  // async function deleteFlow(recipient) {
-  //   const sf = await Framework.create({
-  //     networkName: "kovan",
-  //     provider: "ethers provider",
-  //   });
-
-  //   const signer = "ethers signer";
-
-  //   try {
-  //     const deleteFlowOperation = sf.cfaV1.deleteFlow({
-  //       sender: "web3 account connected",
-  //       receiver: recipient,
-  //       superToken: supertoken,
-  //       // userData?: string
-  //     });
-
-  //     console.log("Deleting your stream...");
-
-  //     await deleteFlowOperation.exec(signer);
-
-  //     console.log(
-  //       `Congrats - you've just deleted your money stream!
-  //        Network: Kovan
-  //        Super Token: DAIx
-  //        Sender: 0xDCB45e4f6762C3D7C61a00e96Fb94ADb7Cf27721
-  //        Receiver: ${recipient}
-  //     `
-  //     );
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
-  // function calculateFlowRate(amount) {
-  //   if (typeof Number(amount) !== "number" || isNaN(Number(amount)) === true) {
-  //     alert("You can only calculate a flowRate based on a number");
-  //     return;
-  //   } else if (typeof Number(amount) === "number") {
-  //     if (Number(amount) === 0) {
-  //       return 0;
-  //     }
-  //     const amountInWei = ethers.BigNumber.from(amount);
-  //     const monthlyAmount = ethers.utils.formatEther(amountInWei.toString());
-  //     const calculatedFlowRate = monthlyAmount * 3600 * 24 * 30;
-  //     return calculatedFlowRate;
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   document.querySelector("body").classList.add("about")
-  // })
+  const [account, setAccount] = useState("");
+  const [account1, setAccount1] = useState("");
+  const [account2, setAccount2] = useState("");
+  const [account3, setAccount3] = useState("");
+  const [accountsArray, addToAccountsArray] = useState([]);
 
   const handleSave = async (event) => {
     const apiObj = {
@@ -205,15 +79,24 @@ function About(props) {
     const wallet = library.connection.url;
     setLibrary(library);
     setProvider(provider);
-    if (wallet == 'metamask') {
-      setMetamaskAccount(account);
+    setAccount(account);
+  }
+
+  function setProfileWalletAccounts(event) {
+    if (account1 == account || account2 == account || account3 == account) {
+      alert('account has already been added. Please choose another account...')
     }
-    if (library.provider.bnbSign) {
-      setBinanceAccount(account);
-    }
-    if (library.provider.isCoinbaseWallet == true) {
-      setCoinbaseAccount(account);
-    }
+    else {
+      if (event.target.name == 'account1') {
+        setAccount1(account);
+      }
+      if (event.target.name == 'account2') {
+        setAccount2(account);
+      }
+      if (event.target.name == 'account3') {
+        setAccount3(account);
+      }
+   }
   }
 
   return (
@@ -257,11 +140,13 @@ function About(props) {
                       type="text"
                       placeholder="0x78..."
                       className="input-form-2 mr-6"
-                      value={metamaskAccount}
+                      value={account1}
                     />
                       <button
                         type="button"
                         className="w-[224px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
+                        name="account1"
+                        onClick={setProfileWalletAccounts}
                       >
                         &nbsp;Add Account to Profile
                       </button>
@@ -277,11 +162,13 @@ function About(props) {
                       type="text"
                       placeholder="K3Yz..."
                       className="input-form-2 mr-6"
-                      value={coinbaseAccount}
+                      value={account2}
                     />
                     <button
                       type="button"
                       className="w-[224px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
+                      name="account2"
+                      onClick={setProfileWalletAccounts}
                     >
                       &nbsp;Add Account to Profile
                     </button>
@@ -297,11 +184,13 @@ function About(props) {
                       type="text"
                       placeholder="0x4d..."
                       className="input-form-2 mr-6"
-                      value={binanceAccount}
+                      value={account3}
                     />
                       <button
                         type="button"
                         className="w-[224px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
+                        name="account3"
+                        onClick={setProfileWalletAccounts}
                       >
                         &nbsp;Add Account to Profile
                       </button>
