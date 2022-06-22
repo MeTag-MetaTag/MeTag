@@ -4,6 +4,9 @@ import Web3Modal from "web3modal";
 import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import WalletConnect from "@walletconnect/web3-provider";
 import { ethers } from 'ethers';
+import SocialLogin from "./SocialLogin";
+import SocialLogout from "./SocialLogout";
+import Profile from "./Profile";
 
 function Navbar(props) {
   const [hideNav, setHideNav] = useState(true);
@@ -13,16 +16,11 @@ function Navbar(props) {
   const [account, setAccount] = useState('');
   const [network, setNetwork] = useState();
   const [chainId, setChainId] = useState();
+  const [web3Modal, setWeb3Modal] = useState();
+
   const providerOptions = {
       binancechainwallet: {
         package: true
-      },
-      coinbasewallet: {
-        package: CoinbaseWalletSDK,
-        options: {
-          appName: "fingers-crossed",
-          infuraId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID
-        }
       },
       walletconnect: {
         package: WalletConnect,
@@ -53,25 +51,44 @@ function Navbar(props) {
   }, []);
 
   const connectWallet = async () => {
+
     const web3Modal = new Web3Modal({
-      providerOptions
+      cacheProvider: false, // optional
+      disableInjectedProvider: false,
+      providerOptions,
     });
+    await web3Modal.clearCachedProvider();
+    // if (provider) {
+    //   await provider.disconnect();
+    // }
     try {
       console.log('waiting for provider');
       const provider = await web3Modal.connect();
       const library = new ethers.providers.Web3Provider(provider);
       const accounts = await library.listAccounts();
       const network = await library.getNetwork();
+      setWeb3Modal(web3Modal); 
       setProvider(provider);
       setLibrary(library);
       if (accounts) setAccount(accounts[0]);
       setNetwork(network);
       setChainId(network.chainId);
-      props.pullUpState(accounts[0], library);
+      props.pullUpState(accounts[0], library, provider);
+      provider.on("accountsChanged", (accounts) => {
+        console.log('accounts***', accounts);
+        props.pullUpState(accounts[0], library, provider);
+      });
     } catch (error) {
       console.error(error);
     }
   };
+
+  const disconnectWallet = async () => {
+    await web3Modal.clearCachedProvider();
+    await provider.disconnect();
+  }
+
+
 
   return (
     <header className="flex flex-wrap justify-center items-center sticky top-0 bg-transparent backdrop-blur-lg z-[99] transition duration-200 py-0.5 px-16">
@@ -101,7 +118,11 @@ function Navbar(props) {
         </Link>
       </div>
       <div className="items-end flex flex-row space-x-3">
+        <SocialLogin className="tetiary-1 text-white">SOCIAL LOGIN BUTTON</SocialLogin>
+        <SocialLogout className="tetiary-1 text-white">SOCIAL LOGIN BUTTON</SocialLogout>
         <button className="tetiary-1 text-white" onClick={connectWallet}>Connect Wallet</button>
+        <button className="tetiary-1 text-white" onClick={disconnectWallet}>Disconnect Wallet</button>
+        <Profile /> 
       </div>
     </header>
   );
