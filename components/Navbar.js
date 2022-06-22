@@ -4,6 +4,9 @@ import Web3Modal from "web3modal";
 import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import WalletConnect from "@walletconnect/web3-provider";
 import { ethers } from 'ethers';
+import SocialLogin from "./SocialLogin";
+import SocialLogout from "./SocialLogout";
+import Profile from "./Profile";
 
 function Navbar(props) {
   const [hideNav, setHideNav] = useState(true);
@@ -19,13 +22,6 @@ function Navbar(props) {
       binancechainwallet: {
         package: true
       },
-      coinbasewallet: {
-        package: CoinbaseWalletSDK,
-        options: {
-          appName: "fingers-crossed",
-          infuraId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID
-        }
-      },
       walletconnect: {
         package: WalletConnect,
         options: {
@@ -33,13 +29,6 @@ function Navbar(props) {
         }
       }
   };
-  
-// function installMetamask() {
-// if (!(window.web3 || window.ethereum)) {
-//   if (${(`#installMetaMask`)}.length < 1)
-//     $(`.web3modal-modal-card`).prepend('<div id="installMetaMask" class="cjAFRf web3modal-provider-wrapper"><a href="https://metamask.io/" target="_blank" class="cjAFRf web3modal-provider-container"><div class="jMhaxE web3modal-provider-icon"><img src="./assets/img/metamask.svg" alt="MetaMask"></div><div class="bktcUM sc-web3modal-provider-name mt-0">Install MetaMask</div><div class="eFHlqH web3modal-provider-description">Connect using browser wallet</div></a></div>')
-// }
-// }
 
   const openNav = () => {
     setHideNav(!hideNav);
@@ -62,13 +51,12 @@ function Navbar(props) {
   }, []);
 
   const connectWallet = async () => {
-      console.log('hey the changes are live true ****');
+
     const web3Modal = new Web3Modal({
-      cacheProvider: true, // optional
+      cacheProvider: false, // optional
       disableInjectedProvider: false,
       providerOptions,
     });
-    // installMetamask();
     await web3Modal.clearCachedProvider();
     // if (provider) {
     //   await provider.disconnect();
@@ -130,8 +118,11 @@ function Navbar(props) {
         </Link>
       </div>
       <div className="items-end flex flex-row space-x-3">
+        <SocialLogin className="tetiary-1 text-white">SOCIAL LOGIN BUTTON</SocialLogin>
+        <SocialLogout className="tetiary-1 text-white">SOCIAL LOGIN BUTTON</SocialLogout>
         <button className="tetiary-1 text-white" onClick={connectWallet}>Connect Wallet</button>
         <button className="tetiary-1 text-white" onClick={disconnectWallet}>Disconnect Wallet</button>
+        <Profile /> 
       </div>
     </header>
   );

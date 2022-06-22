@@ -12,7 +12,6 @@ import wave from "../public/img/waving-hand.png";
 import shop from "../public/img/shopping-bags.png";
 import bell from "../public/img/bell.png";
 import Link from "next/link";
-
 import { useState, useEffect } from "react";
 import {
   SearchIcon,
@@ -33,11 +32,11 @@ import {
 } from "@chakra-ui/react";
 
 import { FcPlus } from "react-icons/fc";
-
 import Web3Modal from "web3modal";
-import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import WalletConnect from "@walletconnect/web3-provider";
+import Portis from "@portis/web3";
 import { ethers } from 'ethers';
+import { useAuth0 } from "@auth0/auth0-react";
 
 function About(props) {
 
@@ -45,58 +44,128 @@ function About(props) {
   const [twitter, setTwitter] = useState("");
   const [discord, setDiscord] = useState("");
   const [instagram, setInstagram] = useState("");
-  const [library, setLibrary] = useState("");
-  const [provider, setProvider] = useState("");
   const [account, setAccount] = useState("");
-  const [account1, setAccount1] = useState("");
-  const [account2, setAccount2] = useState("");
-  const [account3, setAccount3] = useState("");
-  const [accountsArray, addToAccountsArray] = useState([]);
+  const [metamaskAccount, setMetamaskAccount] = useState("");
+  const [binanceAccount, setBinanceAccount] = useState("");
+  const [portisAccount, setPortisAccount] = useState("");
+  const [provider, setProvider] = useState();
+  const [library, setLibrary] = useState();
+
 
   const handleSave = async (event) => {
-    const apiObj = {
-        "username" : "John Smith",
-        "email" : "fakemail@gmail.com",
-        "metamask_id" : metamaskAccount,
-        "coinbase_id" : coinbaseAccount,
-        "binance_id" : binanceAccount,
-        "twitter" : twitter,
-        "instagram" : instagram,
-        "discord" : discord
-    }
+  //   const apiObj = {
+  //       "username" : "John Smith",
+  //       "email" : "fakemail@gmail.com",
+  //       "metamask_id" : metamaskAccount,
+  //       "coinbase_id" : coinbaseAccount,
+  //       "binance_id" : binanceAccount,
+  //       "twitter" : twitter,
+  //       "instagram" : instagram,
+  //       "discord" : discord
+  //   }
 
-   const response = await axios.post('https://api-meta-tag-2.herokuapp.com/api/member/create ', apiObj);
+  //  const response = await axios.post('https://api-meta-tag-2.herokuapp.com/api/member/create ', apiObj);
 
-  //  router.push(`/qrcode/${metamaskAccount}`);
-   router.push(`qrcode/new`);
-   console.log('response', response);
+  // //  router.push(`/qrcode/${metamaskAccount}`);
+  //  router.push(`qrcode/new`);
+  //  console.log('response', response);
   }
 
   async function pullUpState(account, library, provider) {
-    console.log('library*', library);
-    console.log('provider*', provider);
-    console.log('account', account);
     const wallet = library.connection.url;
     setLibrary(library);
     setProvider(provider);
     setAccount(account);
   }
 
-  function setProfileWalletAccounts(event) {
-    if (account1 == account || account2 == account || account3 == account) {
-      alert('account has already been added. Please choose another account...')
+  const setWalletsRegistration = async (event) => {
+    let web3Modal;
+    let providerOptions = {
+      /* Metamask default */
+    };
+
+    if (event.target.name == 'metamask') {
+      web3Modal = new Web3Modal({
+        cacheProvider: false, // optional
+        disableInjectedProvider: false,
+        providerOptions
+      });
     }
-    else {
-      if (event.target.name == 'account1') {
-        setAccount1(account);
-      }
-      if (event.target.name == 'account2') {
-        setAccount2(account);
-      }
-      if (event.target.name == 'account3') {
-        setAccount3(account);
-      }
-   }
+    if (event.target.name == 'binance') {
+      providerOptions = {
+        binancechainwallet: {
+          package: true
+        }
+      };
+      web3Modal = new Web3Modal({
+        cacheProvider: false, // optional
+        disableInjectedProvider: true,
+        providerOptions
+      });
+    }
+    if (event.target.name == 'portis') {
+      providerOptions = {
+        portis: {
+          package: Portis, // required
+          registerPageByDefault: false,
+          options: {
+            id: "7642c4c6-daed-4473-956f-121098aa4ace" // required
+          }
+        }
+      };
+      web3Modal = new Web3Modal({
+        cacheProvider: false, // optional
+        disableInjectedProvider: true,
+        providerOptions
+      });
+    }
+
+    await web3Modal.clearCachedProvider();
+    try {
+      console.log('waiting for provider');
+      const provider = await web3Modal.connect();
+
+      const library = new ethers.providers.Web3Provider(provider);
+      const accounts = await library.listAccounts();
+      if (accounts) setAccount(accounts[0]);
+      if (event.target.name == 'metamask') {
+        console.log('inside metamask*');
+        setMetamaskAccount(accounts[0]);
+       }
+       if (event.target.name == 'binance') {
+        console.log('inside binance*');
+        setBinanceAccount(accounts[0]);
+       }
+       if (event.target.name == 'portis') {
+        console.log('inside portis*');
+        setPortisAccount(accounts[0]);
+       }
+      const network = await library.getNetwork();
+      provider.on("accountsChanged", (accounts) => {
+        console.log('account*', accounts[0]);
+        if (accounts) setAccount(accounts[0]);
+        if (event.target.name == 'metamask') {
+          console.log('inside metamask**');
+          setMetamaskAccount(accounts[0]);
+         }
+         if (event.target.name == 'binance') {
+          console.log('inside binance**');
+          setBinanceAccount(accounts[0]);
+         }
+         if (event.target.name == 'portis') {
+          console.log('inside portis*');
+          setPortisAccount(accounts[0]);
+         }
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const handleTwitter = async (event) => {
+    const { loginWithRedirect } = useAuth0();
+  
+    return <button onClick={() => loginWithRedirect()}>Log In</button>;
   }
 
   return (
@@ -140,13 +209,13 @@ function About(props) {
                       type="text"
                       placeholder="0x78..."
                       className="input-form-2 mr-6"
-                      value={account1}
+                      value={metamaskAccount}
                     />
                       <button
                         type="button"
                         className="w-[224px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                        name="account1"
-                        onClick={setProfileWalletAccounts}
+                        name="metamask"
+                        onClick={setWalletsRegistration}
                       >
                         &nbsp;Add Account to Profile
                       </button>
@@ -155,20 +224,20 @@ function About(props) {
                 </div>
                 <div className="mt-4">
                   <label className="form-text" htmlFor="firstName">
-                    CoinBase
+                    Binance
                   </label>
                   <div className="flex flex-row justify-center items-center">
                     <input
                       type="text"
                       placeholder="K3Yz..."
                       className="input-form-2 mr-6"
-                      value={account2}
+                      value={binanceAccount}
                     />
                     <button
                       type="button"
                       className="w-[224px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                      name="account2"
-                      onClick={setProfileWalletAccounts}
+                      name="binance"
+                      onClick={setWalletsRegistration}
                     >
                       &nbsp;Add Account to Profile
                     </button>
@@ -177,20 +246,20 @@ function About(props) {
                 </div>
                 <div className="mt-4 mb-11">
                   <label className="form-text" htmlFor="firstName">
-                    Binance
+                    Portis
                   </label>
                   <div className="flex flex-row">
                     <input
                       type="text"
                       placeholder="0x4d..."
                       className="input-form-2 mr-6"
-                      value={account3}
+                      value={portisAccount}
                     />
                       <button
                         type="button"
                         className="w-[224px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
-                        name="account3"
-                        onClick={setProfileWalletAccounts}
+                        name="portis"
+                        onClick={setWalletsRegistration}
                       >
                         &nbsp;Add Account to Profile
                       </button>
@@ -214,6 +283,7 @@ function About(props) {
                     <button
                       type="button"
                       className="w-[224px] h-[44px] bg-[#FF8D4D] sub-heading-2 py-1 px-1 rounded-[6px]  mr-[18px]"
+                      onClick={handleTwitter}
                     >
                       &nbsp;Add Username to Profile
                     </button>
